@@ -1,0 +1,30 @@
+#+Title: Links e Material
+#+Author: Alexandre Rademaker
+
+* Books 
+
+- [[http://norvig.com/paip.html][Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp]]
+- [[https://mitpress.mit.edu/sicp/][Structure and Interpretation of Computer Programs]]
+- [[http://www.gigamonkeys.com/book/][Practical Common Lisp]]
+
+* Links 
+
+- http://www.joelonsoftware.com/articles/TestYourself.html
+- http://www.michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/
+- http://www.paulgraham.com/rootsoflisp.html
+
+* Lisp Implementations
+
+- http://www.lispworks.com
+- http://www.sbcl.org
+- http://clozure.com/clozure-cl.html
+- https://common-lisp.net/project/lispbox/ (pode ser uma alternativa
+  para fácil instalação)
+
+* Ferramentas
+
+- editor :: https://www.gnu.org/software/emacs/
+  - http://emacsformacosx.com
+  - [[https://www6.software.ibm.com/developerworks/education/l-emacs/l-emacs-ltr.pdf][Living in Emacs]] 
+- controle de versão :: https://git-scm.com 
+  - https://github.com

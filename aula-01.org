@@ -1,0 +1,12 @@
+#+Title: Aula 01
+#+Author: Alexandre Rademaker
+
+* Apresentação
+
+Conversamos sobre o curso e avaliação do curso que será feita pela
+medição de contribuição dos alunos ao projeto open-source que será
+desenvolvido baseado no livro PAIP.
+
+Nas primeiras aulas serei substituído pelo [[http://www.tecmf.inf.puc-rio.br/HugoMacedo][Hugo Macedo]].
+
+Leitura obrigatória, [[http://www.gigamonkeys.com/book/introduction-why-lisp.html][Why Lisp]].
