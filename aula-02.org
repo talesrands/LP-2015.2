@@ -1,0 +1,20 @@
+#+Title: Aula 02
+#+Author: Hugo Macedo
+
+* Motivação e Diagnóstico de conhecimentos
+
+- Mas porque são importantes as linguagens de programação?    
+- Brainstorming o que é um programa/computador?
+    
+* Linguagens de programação
+
+- Evolução das linguagens de programação 
+- Linguagens imperativas/funcionais
+- Ciclos compilação/interpretação 
+
+* Programação funcional
+       
+* "Lição de casa"
+
+- Ler  [[http://www.gigamonkeys.com/book/introduction-why-lisp.html][Why Lisp]].
+- Instalar editor e completar primeiras secções do Tutorial [[https://www6.software.ibm.com/developerworks/education/l-emacs/l-emacs-ltr.pdf][Living in Emacs]] 
