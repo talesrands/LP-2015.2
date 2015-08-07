@@ -1,7 +1,7 @@
 #+Title: Aula 02
 #+Author: Hugo Macedo
 
-* Motivação e Diagnóstico de conhecimentos
+* Motivação e diagnóstico de conhecimentos
 
 - Mas porque são importantes as linguagens de programação?    
 - Brainstorming o que é um programa/computador?
@@ -13,7 +13,8 @@
 - Ciclos compilação/interpretação 
 
 * Programação funcional
-       
+- Analogia com as definiões matemáticas $y = f(x)$
+- Encapsulamento        
 * "Lição de casa"
 
 - Ler  [[http://www.gigamonkeys.com/book/introduction-why-lisp.html][Why Lisp]].
