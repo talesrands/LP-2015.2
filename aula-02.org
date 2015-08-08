@@ -15,6 +15,7 @@
 * Programação funcional
 - Analogia com as definiões matemáticas $y = f(x)$
 - Encapsulamento        
+
 * "Lição de casa"
 
 - Ler  [[http://www.gigamonkeys.com/book/introduction-why-lisp.html][Why Lisp]].
