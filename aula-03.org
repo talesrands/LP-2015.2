@@ -1,0 +1,19 @@
+#+Title: Aula 03
+#+Author: Hugo Macedo
+
+* Usando Linux na perspectiva do desenvolvedor
+ - Usando apt-get para instalar pacotes em sistemas 
+
+* Rodando o ambiente de desenvolvimento LISP 
+ - Introdução ao interpretador [[http://www.sbcl.org/][SBCL]]
+ - Ficheiro de inicialização do Emacs [[http://www.emacswiki.org/emacs/InitFile][Tutorial sobre .emacs]]
+ - Instalação do [[https://www.common-lisp.net/project/slime/][SLIME]] usando o gestor de pacotes do Emacs [[http://melpa.org/][MELPA]]
+
+* Resolução de dúvida dos alunos
+ - Como rodar sbcl numa máquina sem privilégios de administração:
+   - Usando run-sbcl.sh em Linux/Mac
+   - Extrair sblc.exe do instalador Windows (Não falamos na aula mas é possível!)
+
+* "Lição de casa"
+ - Instalar editor e completar o Tutorial [[https://www6.software.ibm.com/developerworks/education/l-emacs/l-emacs-ltr.pdf][Living in Emacs]] 
+ - Instalar interpretador e rodar comandos básicos [[http://www.sbcl.org/getting.html][Getting started (SLBC)]]
