@@ -1,0 +1,19 @@
+#+Title: Aula 04
+#+Author: Hugo Macedo
+
+
+* Resolução de dúvida dos alunos
+ - Como rodar sbcl numa máquina sem privilégios de administração em
+   windows:
+   - Extrair sblc.exe e sbcl.core do instalador (.msi)
+   - Correr com sblc.exe --core sblc.core 
+
+* Introdução ao LISP 
+ - Sintaxe vs Semântica
+ - Interpretação e o REPL (read-eval-print loop)
+ - S-expressions
+ - Notação de prefixo, infixa, e pós-fixada
+
+* "Lição de casa"
+ - Transformar várias expressões matemáticas para "prefix notation"
+  
