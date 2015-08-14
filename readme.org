@@ -7,6 +7,7 @@
 - [[aula-02.org][Aula 02]]
 - [[file:aula-03.org][Aula 03]]
 - [[file:aula-04.org][Aula 04]]
+- [[file:aula-05.org][Aula 05]]
 
 * Books 
 
