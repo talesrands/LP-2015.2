@@ -33,12 +33,9 @@
        avaliável cuja semântica passa a ser o símbolo ele mesmo.
 
        Por exemplo, após avaliar a expressão (setf X 10), ao
-       avaliarmos o simbolo X, obteremos 10 como resultado. Já ao
-       avaliar 'X, obteremos X. 
+       avaliar o simbolo X obtém-se 10 como resultado. Já ao
+       avaliar 'X obtém-se X. 
      
-     
-     
-    
 
 * Dialectos do LISP
   - Common Lisp (Que usaremos ao longo do curso)
