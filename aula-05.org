@@ -37,7 +37,7 @@
        avaliar 'X obtém-se X. 
      
 
-* Dialectos do LISP
+* Dialetos do LISP
   - Common Lisp (Que usaremos ao longo do curso)
   - Scheme (Que usado em várias referências ex.: [[https://mitpress.mit.edu/sicp/][Structure and Interpretation of Computer Programs]] (SICP))
   - ELisp (Emacs Lisp)
