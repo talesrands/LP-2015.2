@@ -1,0 +1,30 @@
+#+Title: Aula 06
+#+Author: Hugo Macedo
+
+* O uso do GitHub usando a interface web
+  - Explorando o repositório e a meta informação associada
+  - Diferença ficheiro raw/apresentado
+  - Histórico de commits
+  - Estatisticas
+  - Dinâmica de commit/pull-requests
+
+* Predicados
+  - Valores de verdade (T e NIL) 
+  - Teste de igualdade
+  - Operadores relacionais em números (maior, menor,...) 
+   
+* Listas
+  - NIL como a lista vazia e o seu sinónimo ()
+  - Estrutura de sublista baseada na lógica cabeça/cauda 
+
+* If expressions
+  - A avaliação das estruturas condicionais
+  - Exercicio de recapitulação do operador quote 
+
+* A função random
+  - A geração de números pseudo-aleatórios de distribuição uniforme
+    entre 0 e o parametro.
+
+* "Lição de casa"
+ - Executar pull-requests nos sumários corrigindo erros de sintaxe...
+  
