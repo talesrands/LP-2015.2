@@ -1,0 +1,44 @@
+#+Title: Aula 08
+#+Author: Hugo Macedo
+
+* Pull-requets no GitHub
+  - Merges de pull-requests e comentários de melhorias e processo de interacção 
+
+* Definição de funções recursivas 
+  - Exercicio de duas equipas definindo  Fibonnaci e factorial.
+ 
+* Análise de estruturas condicionais 
+  - Resultados possiveis de um teste
+  - Resolução de dúvidas da turma:
+    - Usando o simbolo T como teste 
+    - Concordância de padrões como funcionalidade que pode ser
+      adicionada ao LISP pelo programador, mas não faz parte da
+      definição básica da linguagem (tópico avançado para discutir no
+      futuro)
+   
+* Listas
+  - Construindo listas usando cond e a estrutura cabeça cauda
+  - Lista () como sublista de todas as lists
+  - Operadores first e rest
+  
+* "Lição de casa"
+ 
+ - O que há de errado com a seguinte expressão?
+
+#+begin_src lisp
+(defun f (x)
+  (cond
+    ((equal x 0) 1)
+    ((equal x 1) 2)))
+#+end_src
+
+ - O que acontece ao avaliar (f 2)? 
+
+ - Processo para instalação do MELPA em windows:
+   - Decobrir o nome de "usuário"
+   - Criar directoria Roaming em  C:\Users\"usuário"\AppData\Roaming
+   - Criar ficheiro .emacs dentro dessa página
+   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[%20http://melpa.org/#/getting-started][(link)]]
+   - Continuar com o manual de slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
+ 
+   
