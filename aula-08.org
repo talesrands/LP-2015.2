@@ -61,7 +61,7 @@
     ((equal x 1) 2)))
 #+end_src
 
- - O que acontece ao avaliar (f 2)? 
+ - O que acontece ao avaliar src_lisp[:session]{(f 2)}? 
 
  - Processo para instalação do MELPA em windows:
    - Decobrir o nome de "usuário"
