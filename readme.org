@@ -8,6 +8,10 @@
 - [[file:aula-03.org][Aula 03]]
 - [[file:aula-04.org][Aula 04]]
 - [[file:aula-05.org][Aula 05]]
+- [[file:aula-06.org][Aula 06]]
+- [[file:aula-07.org][Aula 07]]
+- [[file:aula-08.org][Aula 08]]
+
 
 * Books 
 
