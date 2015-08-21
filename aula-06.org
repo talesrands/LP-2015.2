@@ -14,7 +14,7 @@
   - Operadores relacionais em números (maior, menor,...) 
    
 * Listas
-  - NIL como a lista vazia e o seu sinónimo ()
+  - NIL como a lista vazia e o seu sinônimo ()
   - Estrutura de sublista baseada na lógica cabeça/cauda 
 
 * If expressions
