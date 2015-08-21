@@ -38,7 +38,7 @@
    - Decobrir o nome de "usuário"
    - Criar directoria Roaming em  C:\Users\"usuário"\AppData\Roaming
    - Criar ficheiro .emacs dentro dessa página
-   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[%20http://melpa.org/#/getting-started][(link)]]
+   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[http://melpa.org/#/getting-started][(link)]]
    - Continuar com o manual de slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
  
    
