@@ -4,10 +4,39 @@
 * Pull-requets no GitHub
   - Merges de pull-requests e comentários de melhorias e processo de interacção 
 
+* Resoluçaõ da "lição de casa"
+#+begin_src lisp
+(defun absoluto (x)
+  "absoluto : R -> R+ ;; calcula o valor absoluto de um número"
+  (cond
+   ((< x 0) (* -1 x))
+   ((= x 0) 0)
+   ((> x 0) x)
+   ))
+#+end_src lisp
+
+
+
 * Definição de funções recursivas 
   - Exercicio de duas equipas definindo  Fibonnaci e factorial.
- 
+
+#+begin_src lisp
+(defun fib (x)
+  (cond
+    ((= x 0) 1)
+    ((= x 1) 1)
+    ((> x 1) (+ (fib (- x 2)) (fib (- x 1))))))
+
+
+(defun fact (n)
+  " fact : N+ -> N ;; calcula factorial"
+  (cond
+    ((= n 0) 1)
+    (T       (* n (fact (- n 1)))))) 
+#+end_src
+
 * Análise de estruturas condicionais 
+  - O operador not sobre valores lógicos T e NIL
   - Resultados possiveis de um teste
   - Resolução de dúvidas da turma:
     - Usando o simbolo T como teste 
