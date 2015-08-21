@@ -2,23 +2,24 @@
 #+Author: Hugo Macedo
 
 * Pull-requets no GitHub
-  - Merges de pull-requests e comentários de melhorias e processo de interacção 
 
-* Resoluçaõ da "lição de casa"
+- Merges de pull-requests e comentários de melhorias e processo de
+  interacção
+
+* Resolução da "lição de casa"
+
 #+begin_src lisp
 (defun absoluto (x)
   "absoluto : R -> R+ ;; calcula o valor absoluto de um número"
   (cond
    ((< x 0) (* -1 x))
    ((= x 0) 0)
-   ((> x 0) x)
-   ))
+   ((> x 0) x)))
 #+end_src lisp
 
-
-
 * Definição de funções recursivas 
-  - Exercicio de duas equipas definindo  Fibonnaci e factorial.
+
+Exercicio de duas equipas definindo Fibonnaci e factorial.
 
 #+begin_src lisp
 (defun fib (x)
@@ -27,32 +28,33 @@
     ((= x 1) 1)
     ((> x 1) (+ (fib (- x 2)) (fib (- x 1))))))
 
-
 (defun fact (n)
-  " fact : N+ -> N ;; calcula factorial"
+  "fact : N+ -> N ;; calcula factorial"
   (cond
     ((= n 0) 1)
-    (T       (* n (fact (- n 1)))))) 
+    (t (* n (fact (- n 1)))))) 
 #+end_src
 
 * Análise de estruturas condicionais 
-  - O operador not sobre valores lógicos T e NIL
-  - Resultados possiveis de um teste
-  - Resolução de dúvidas da turma:
-    - Usando o simbolo T como teste 
-    - Concordância de padrões como funcionalidade que pode ser
-      adicionada ao LISP pelo programador, mas não faz parte da
-      definição básica da linguagem (tópico avançado para discutir no
-      futuro)
+
+- O operador not sobre valores lógicos T e NIL
+- Resultados possiveis de um teste
+- Resolução de dúvidas da turma:
+  - Usando o simbolo T como teste 
+  - Concordância de padrões como funcionalidade que pode ser
+    adicionada ao LISP pelo programador, mas não faz parte da
+    definição básica da linguagem (tópico avançado para discutir no
+    futuro)
    
 * Listas
-  - Construindo listas usando cond e a estrutura cabeça cauda
-  - Lista () como sublista de todas as lists
-  - Operadores first e rest
+
+- Construindo listas usando cond e a estrutura cabeça cauda
+- Lista () como sublista de todas as lists
+- Operadores first e rest
   
-* "Lição de casa"
+* Lição de casa
  
- - O que há de errado com a seguinte expressão?
+O que há de errado com a seguinte expressão?
 
 #+begin_src lisp
 (defun f (x)
@@ -61,14 +63,13 @@
     ((equal x 1) 2)))
 #+end_src
 
- - O que acontece ao avaliar (f 2)? 
-
- - Processo para instalação do MELPA em windows:
-   - Decobrir o nome de "usuário"
-   - Criar directoria Roaming em  C:\Users\"usuário"\AppData\Roaming
-   - Criar ficheiro .emacs dentro dessa directoria
-   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[http://melpa.org/#/getting-started][(link)]]
-   - Continuar com o manual de slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
- - Pull requests com correcções de sintaxe nos sumários
+- O que acontece ao avaliar (f 2)? 
+- Processo para instalação do MELPA em windows:
+  - Decobrir o nome de "usuário"
+  - Criar directoria Roaming em  C:\Users\"usuário"\AppData\Roaming
+  - Criar ficheiro .emacs dentro dessa directoria
+  - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[http://melpa.org/#/getting-started][(link)]]
+  - Continuar com o manual de slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
+- Pull requests com correcções de sintaxe nos sumários
  
    

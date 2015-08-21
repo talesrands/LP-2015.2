@@ -12,7 +12,6 @@
 - [[file:aula-07.org][Aula 07]]
 - [[file:aula-08.org][Aula 08]]
 
-
 * Books 
 
 - [[http://norvig.com/paip.html][Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp]] (PAIP)
@@ -27,6 +26,8 @@
   - [[http://www.paulgraham.com/progbot.html][Programming Bottom-Up]]
   - [[http://www.paulgraham.com/avg.html][Beating the Averages]]
 - [[http://www.michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/][Lisp as the Maxwell’s equations of software]]
+- [[http://www.quora.com/Why-are-financial-companies-interested-in-functional-programming][Why are financial companies interested in functional programming?]]
+- [[http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/][Debugging Lisp Posts]]
 - [[http://www.joelonsoftware.com/articles/TestYourself.html][Test Yourself]]
 
 * Implementações

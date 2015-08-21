@@ -2,29 +2,35 @@
 #+Author: Hugo Macedo
 
 * O uso do GitHub usando linha de comandos
-  - Fazendo o clone de um repositório
-  - Dinâmica de add/commit/push
 
+- Fazendo o clone de um repositório
+- Dinâmica de add/commit/push
 
 * Definição de funções
-  - Usando defun e defparameter
-  - Implementando funções básicas sobre números (média, valor absoluto)
 
+- Usando defun e defparameter
+- Implementando funções básicas sobre números (média, valor absoluto)
 
 * Documentação de código
-  - Linhas de comentário e string comentário na defun
-  - Comandos para busca de informações documentation/describe
 
+- Linhas de comentário e string comentário na defun
+- Comandos para busca de informações documentation/describe
   
-* "Lição de casa"
- - Definir a função valor absoluto usando a estrutura cond que estende
-   a funcionalidade if:
-     (cond ((teste1) (expressão a avaliar caso o teste1 seja verdadeiro))
-           ((teste2) (expressão a avaliar caso o teste2 seja verdadeiro))
-           ...
-           ((testeN) (expressão a avaliar caso o testeN seja verdadeiro))
-     )
- - Executar pull-requests nos sumários corrigindo erros de
-   sintaxe... (Basta um por pessoa!)
- - [[http://rogerdudler.github.io/git-guide/][Guia sobre o git]]
+* Lição de casa
+
+- Definir a função valor absoluto usando a função =cond= que estende a
+  funcionalidade if:
+
+#+BEGIN_SRC lisp
+  (cond 
+    ((teste1) (expressão a avaliar caso o teste1 seja verdadeiro))
+    ((teste2) (expressão a avaliar caso o teste2 seja verdadeiro))
+    ...
+    ((testeN) (expressão a avaliar caso o testeN seja verdadeiro)))
+#+END_SRC
+
+- Executar pull-requests nos sumários corrigindo erros de
+  sintaxe... (Basta um por pessoa!)
+
+- [[http://rogerdudler.github.io/git-guide/][Guia sobre o git]]
    
