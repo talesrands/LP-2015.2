@@ -65,7 +65,7 @@ O que há de errado com a seguinte expressão?
 
 - O que acontece ao avaliar (f 2)? 
 - Processo para instalação do MELPA em windows:
-  - Decobrir o nome de "usuário"
+  - Descobrir o nome de "usuário"
   - Criar diretoria Roaming em  C:\Users\"usuário"\AppData\Roaming
   - Criar ficheiro .emacs dentro dessa diretoria
   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[http://melpa.org/#/getting-started][(link)]]
