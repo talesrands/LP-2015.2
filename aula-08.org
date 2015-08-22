@@ -38,7 +38,7 @@ Exercicio de duas equipas definindo Fibonnaci e factorial.
 * Análise de estruturas condicionais 
 
 - O operador not sobre valores lógicos T e NIL
-- Resultados possiveis de um teste
+- Resultados possíveis de um teste
 - Resolução de dúvidas da turma:
   - Usando o simbolo T como teste 
   - Concordância de padrões como funcionalidade que pode ser
@@ -66,8 +66,8 @@ O que há de errado com a seguinte expressão?
 - O que acontece ao avaliar (f 2)? 
 - Processo para instalação do MELPA em windows:
   - Decobrir o nome de "usuário"
-  - Criar directoria Roaming em  C:\Users\"usuário"\AppData\Roaming
-  - Criar ficheiro .emacs dentro dessa directoria
+  - Criar diretoria Roaming em  C:\Users\"usuário"\AppData\Roaming
+  - Criar ficheiro .emacs dentro dessa diretoria
   - Colocar nesse ficheiro o conteúdo mostrado na página do MELPA [[http://melpa.org/#/getting-started][(link)]]
   - Continuar com o manual de slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
 - Pull requests com correcções de sintaxe nos sumários
