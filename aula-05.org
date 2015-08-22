@@ -3,7 +3,7 @@
 
 * Interação com o interpretador 
  - Comandos básicos 
-  (load "ficheiro.lisp"), (quit)
+  (load "pasta.lisp"), (quit)
  - Erros e usabilidade
 
 * Uso do Emacs para interagir com o interpretador
@@ -30,10 +30,10 @@
      
      - O quote serve como forma de forçar o interpretador a tratar
        expressões como se fossem dados, ou seja símbolos/sintaxe não
-       avaliável cuja semântica passa a ser o símbolo ele mesmo.
+       avaliável cuja semântica passa a ser o símbolo dele mesmo.
 
        Por exemplo, após avaliar a expressão (setf X 10), ao
-       avaliar o simbolo X obtém-se 10 como resultado. Já ao
+       avaliar o símbolo X obtém-se 10 como resultado. Já ao
        avaliar 'X obtém-se X. 
      
 
