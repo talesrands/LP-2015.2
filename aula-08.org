@@ -48,7 +48,7 @@ Exercicio de duas equipas definindo Fibonnaci e factorial.
    
 * Listas
 
-- Construindo listas usando cond e a estrutura cabeça cauda
+- Construindo listas usando cons e a estrutura cabeça cauda
 - Lista () como sublista de todas as lists
 - Operadores first e rest
   
