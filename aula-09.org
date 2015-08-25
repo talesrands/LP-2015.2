@@ -1,0 +1,30 @@
+#+Title: Aula 09
+#+Author: Hugo Macedo
+
+
+
+
+* Discussão da "lição de casa" anterior
+- Condicionais e dominios fracionados
+- Definção recursiva de um  somatório
+- Diferença dos operadores = e equal 
+
+* Listas
+
+- Cons como inversa do emparelhamento de first e rest
+- Operadores car e cdr
+- Definição de funções sobre listas (comprimento) 
+- Células ( car . cdr )
+- Implementação de listas usando células   
+  
+
+* Lição de casa
+
+- UPDATE: A instalação MELPA em windows não funciona no laboratóro
+  devido a problemas de rede!
+
+- Processo para instalação do SLIME (nos laboratórios):
+  - Descobrir o nome de "usuário"
+  - Criar diretoria Roaming em  C:\Users\usuário\AppData\Roaming
+  - Criar ficheiro .emacs dentro dessa diretoria
+  - Seguir com instalação manual (Secção 2.3.1) do slime [[https://common-lisp.net/project/slime/doc/html/Installation.html][(link)]]
