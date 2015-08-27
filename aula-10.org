@@ -28,6 +28,13 @@ Algumas linhas interessantes para se ter no arquivo =.emacs=.
 Podemos instalar via o gerenciador de pacotes do Emacs, com o comando
 =ALT-x package-list-packages= ou via quicklisp rodando. 
 
+#+BEGIN_SRC lisp
+(ql:quickload "quicklisp-slime-helper")
+#+END_SRC
+
+após ter o quicklisp corretamente instalado em uma implementação Lisp
+(SBCL ou CCL).
+
 ** Git
 
 Falamos sobre conceitos e operações básicas do git. Falaremos mais na
