@@ -1,10 +1,9 @@
 #+Title: Aula 09
+#+Date: <2015-08-24 Mon>
 #+Author: Hugo Macedo
 
-
-
-
 * Discussão da "lição de casa" anterior
+
 - Condicionais e dominios fracionados
 - Definção recursiva de um  somatório
 - Diferença dos operadores = e equal 
@@ -17,7 +16,6 @@
 - Células ( car . cdr )
 - Implementação de listas usando células   
   
-
 * Lição de casa
 
 - UPDATE: A instalação MELPA em windows não funciona no laboratóro

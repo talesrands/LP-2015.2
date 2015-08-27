@@ -1,0 +1,34 @@
+#+Title: Aula 10 
+#+Date: <2015-08-26 Wed>
+#+Author: Alexandre Rademaker
+
+* Revisão Ferramentas
+
+** Emacs 
+
+Algumas linhas interessantes para se ter no arquivo =.emacs=. 
+
+#+BEGIN_SRC elisp
+;; package manager
+(setq load-path (cons "~/.emacs.d/others" load-path))
+
+(require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(package-initialize)
+
+;; font
+(set-face-attribute 'default nil :height 160)
+#+END_SRC
+
+** Slime
+
+Podemos instalar via o gerenciador de pacotes do Emacs, com o comando
+=ALT-x package-list-packages= ou via quicklisp rodando. 
+
+** Git
+
+Falamos sobre conceitos e operações básicas do git. Falaremos mais na
+próxima aula.
