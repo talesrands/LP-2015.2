@@ -31,7 +31,7 @@
 - [[http://www.quora.com/Why-are-financial-companies-interested-in-functional-programming][Why are financial companies interested in functional programming?]]
 - [[http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/][Debugging Lisp Posts]]
 - [[http://www.joelonsoftware.com/articles/TestYourself.html][Test Yourself]]
-- [[https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html]]
+- [[https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html][Ninety Nine Lisp Problems]]
 
 * Implementações
 
