@@ -1,4 +1,5 @@
 #+Title: Aula 03
+#+Date: <2015-08-10 Mon>
 #+Author: Hugo Macedo
 
 * Usando Linux na perspectiva do desenvolvedor

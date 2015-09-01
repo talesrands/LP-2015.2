@@ -1,4 +1,5 @@
 #+Title: Aula 06
+#+Date: <2015-08-17 Mon>
 #+Author: Hugo Macedo
 
 * O uso do GitHub usando a interface web

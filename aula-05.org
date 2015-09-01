@@ -1,4 +1,5 @@
 #+Title: Aula 05
+#+Date: <2015-08-14 Fri>
 #+Author: Hugo Macedo
 
 * Interação com o interpretador 

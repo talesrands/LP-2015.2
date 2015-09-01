@@ -1,4 +1,5 @@
 #+Title: Aula 02
+#+Date: <2015-08-07 Fri>
 #+Author: Hugo Macedo
 
 * Motivação e diagnóstico de conhecimentos

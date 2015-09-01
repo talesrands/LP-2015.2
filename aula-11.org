@@ -1,0 +1,13 @@
+#+Title: Aula 11 
+#+Date: <2015-08-28 Fri>
+#+Author: Alexandre Rademaker
+
+* Git e GitHub
+
+Revisamos git e github. Fizemos algums testes e exemplos de como usar
+git, conflito e resolução de conflitos com branches.
+
+* Tarefas
+
+- Ler [[https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start][Cap 1 SICP]]
+

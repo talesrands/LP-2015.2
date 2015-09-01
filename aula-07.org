@@ -1,4 +1,5 @@
 #+Title: Aula 07  
+#+Date: <2015-08-19 Wed>
 #+Author: Hugo Macedo
 
 * O uso do GitHub usando linha de comandos

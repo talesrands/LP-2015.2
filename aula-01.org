@@ -1,4 +1,5 @@
 #+Title: Aula 01
+#+Date: <2015-08-05 Wed>
 #+Author: Alexandre Rademaker
 
 * Apresentação

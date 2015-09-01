@@ -1,0 +1,18 @@
+#+Title: Aula 12
+#+Date: <2015-08-31 Mon>
+#+Author: Alexandre Rademaker
+
+* Conteúdo
+
+- Variantes de Lisp: [[https://common-lisp.net][Common Lisp]], [[http://racket-lang.org][Racket]], [[http://clojure.org][Clojure]] etc
+- Regra de avaliação
+- Formas e Formas Especiais
+- Método de Newton para calcular raíz quadrada (vide [[https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1.7][1.1.7]])
+
+* Tarefas 
+
+- Ler [[https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start][Cap 2]] do SICP.
+- Vide issues do repositório.
+- Inscrevam-se (watch topo do repositório) do repositório para saberem
+  de novidades.
+
