@@ -40,32 +40,6 @@
 
 					;;Exercício 1.7 FIM
 					
-					;;Exercício 1.8 Início
-(defun improve-cube(y x)
-  (/ ( + (/ x (* y y)) (* 2 y)) 3))
-
-(defun cubo(x)
-  (* x (* x x))
-  )
-   
-(defun good-enough-cube? (guess x)
-  (if (< (abs (- x (cubo guess ))) 0.001)
-      t
-      nil
-      )
-  )
-(defun cube-root-iter(guess x)
-  (if (good-enough-cube? guess x) 
-      guess
-      (cube-root-iter (improve-cube guess x) x)
-      )
-  )
-  
-(defun cube-root (x)
-  (cube-root-iter 1.0 x)
-  )
-				
-					;;Exercício 1.8 - FIM
 
 
 ;; to test
