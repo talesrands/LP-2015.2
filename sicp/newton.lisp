@@ -16,8 +16,8 @@
 
 (defun my-sqrt (x)
   (sqrt-iter 1.0 x))
-
-
+  
+;;					Exercício 1.7 - Início:
 
 (defun good-enough?1.7(previous-guess guess)
 ;;Compara se o guess e o previous-guess estão suficientemente próximos
@@ -38,7 +38,8 @@
   (sqrt-iter1.7 0.0 1.0 x))
 
 
-
+				;;Exercício 1.7 FIM
+				
 
 
 ;; to test
