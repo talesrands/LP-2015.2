@@ -16,31 +16,28 @@
 
 (defun my-sqrt (x)
   (sqrt-iter 1.0 x))
-  
-;;					Exercício 1.7 - Início:
 
-(defun good-enough?1.7(previous-guess guess)
-;;Compara se o guess e o previous-guess estão suficientemente próximos
-  (if (< (abs (- guess previous-guess)) 0.001)
-      t
-      nil
-      )
-  )
 
-(defun sqrt-iter1.7(previous-guess guess x)
-;;Melhora o guess até ele ficar bom o suficiente.
-  (if (good-enough?1.7 previous-guess  guess)
+(defun my-sqrt-1 (x &optional (previous-guess 0.0) (guess 1.0))
+  (if (< (abs (- guess previous-guess)) 0.001) 
       guess
-      (sqrt-iter1.7 guess (improve guess x) x)))
+      (my-sqrt-1 x guess (improve guess x))))
 
-(defun my-sqrt1.7(x)
-;;Atribui 0 para o previous-guess e 1 para o guess (abs 1 - 0) > 0.001 e chama sqrt-iter1.7
-  (sqrt-iter1.7 0.0 1.0 x))
+(defun my-sqrt-2 (x &optional (previous-guess 0.0) (guess 1.0))
+  (labels ((good? (previous-guess guess)
+	     (< (abs (- guess previous-guess)) 0.001)))
+    (if (good? previous-guess guess)
+	guess
+	(my-sqrt-2 x guess (improve guess x)))))
 
 
-					;;Exercício 1.7 FIM
-					
+(defun range-1 (a b)
+  (let ((res nil))
+    (dotimes (x 10 (reverse res))
+      (push x res))))
 
+(defun range (a b)
+  (loop for x from a to b collect x))
 
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
