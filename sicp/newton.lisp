@@ -36,8 +36,13 @@
     (dotimes (x 10 (reverse res))
       (push x res))))
 
-(defun range (a b)
-  (loop for x from a to b collect x))
+(defun steps-number (max min step)
+  (if (= (mod (- max min) step) 0)
+      (/ (- (- max step) min) step)
+      (/ (- max min) step)))
+
+(defun range (&key (min 0) max (step 1))
+  (loop for x from 0 to (steps-number max min step) collect (+ min (* x step))))
 
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
