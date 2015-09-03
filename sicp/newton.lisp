@@ -39,9 +39,9 @@
 (defun range (a b)
   (loop for x from a to b collect x))
 
-(defun range-2 (max &optional (min 0) (step 1))
-	(when (< min  max) 
-	(cons min (range-2 max (+ min step) step))))
+(defun range-2 (&key (max -1) (min 0) (step 1))
+ (when (< min  max) 
+  (cons min (range-2 :max max :min (+ min step) :step step))))
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
 
