@@ -30,6 +30,15 @@
 	guess
 	(my-sqrt-2 x guess (improve guess x)))))
 
+(defun improve-2 (guess x)
+  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3))
+  
+(defun my-cbrt-3 (x &optional (guess 1.0) (previous-guess 0.0))
+  (labels ((good? (previous-guess guess)
+		  (< (abs (- guess previous-guess)) 0.0001)))
+	  (if (good? previous-guess guess)
+	      guess
+	    (my cbrt-3 x guess (improve-2 guess x)))))
 
 (defun range-1 (a b)
   (let ((res nil))
