@@ -10,7 +10,8 @@ Vide arquivos no repo das aulas.
 - [[http://norvig.com/paip.html][Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp]] (PAIP)
 - [[https://mitpress.mit.edu/sicp/][Structure and Interpretation of Computer Programs]] (SICP)
 - [[http://www.gigamonkeys.com/book/][Practical Common Lisp]] (PCL)
-- [[http://landoflisp.com][Land of Lisp]]
+- [[http://landoflisp.com][Land of Lisp]] (LoL)
+- [[http://aima.cs.berkeley.edu/code.html][Artificial Intelligence: A Modern Approach]] (AIMA)
 
 * Leituras Recomendadas
 
