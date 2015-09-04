@@ -40,14 +40,17 @@
   (cadr s))
 
 (defun augend (s)
-  (caddr s))
-
+  (cond ((not (null (cdddr s))) (cons '+ (cddr s)))
+	((not (null (cddr s))) (caddr s))
+	( t 0)))
+	
 (defun multiplier (p)
   (cadr p))
 
 (defun multiplicand (p)
-  (caddr p))
-
+  (cond ((not (null (cdddr p))) (cons '* (cddr p)))
+	((not (null (cddr p))) (caddr p))
+	(t 1)))
 
 (defun pair? (x)
   (and (not (atom x)) (not (null x))))
