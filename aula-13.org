@@ -1,0 +1,13 @@
+#+Title: Aula 12
+#+Date: <2015-09-02 Wed>
+#+Author: Alexandre Rademaker
+
+* Conteúdo
+
+- Corrigi as contribuições no repo sobre o problema da raiz quadrada.
+- Falei sobre abstração e a implementação da função =range=.
+- Falamos sobre o problema das derivadas.
+
+* Tarefas 
+
+Coloquei novas tarefas no issue track do projeto. 

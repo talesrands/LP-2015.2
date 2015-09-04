@@ -1,0 +1,11 @@
+#+Title: Aula 12
+#+Date: <2015-09-04 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+- https://www.hackerrank.com/worldcup
+- Corrigir submissões
+- Gerador de sentenças em EN.
+
+
