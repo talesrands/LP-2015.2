@@ -21,3 +21,9 @@
   (loop for x from 0 to (steps-number max min step)
 	collect (+ min (* x step))))
 
+
+(defun range-Python (&rest lista)
+  (cond ((= 3 (length lista)) (range :min (nth 0 lista) :max (nth 1 lista) :step (nth 2 lista)))
+	((= 2 (length lista)) (range :min (nth 0 lista) :max (nth 1 lista)))
+	((= 1 (length lista))  (range :max (nth 0 lista)))
+	(t (error "Número invalido de argumentos"))))
