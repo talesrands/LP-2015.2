@@ -39,6 +39,13 @@
 (defun range (a b)
   (loop for x from a to b collect x))
 
+(defun range-Python (&rest lista)
+  (cond ((= 3 (length lista)) (range :min (nth 0 lista) :max (nth 1 lista) :step (nth 2 lista)))
+	((= 2 (length lista)) (range :min (nth 0 lista) :max (nth 1 lista)))
+	((= 1 (length lista))  (range :max (nth 0 lista)))
+	(t (error "Número invalido de argumentos"))))
+
+
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
 
