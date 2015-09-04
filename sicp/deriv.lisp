@@ -79,4 +79,9 @@
                          (deriv (multiplicand exp) var))
            (make-product (deriv (multiplier exp) var)
                          (multiplicand exp))))
-        (t (error "unknown expression type -- DERIV" exp))))
+	((exponentiation? exp)
+	 (make-product (deriv (base exp) var)
+	 (make-product (exponent exp)
+		       (make-exponentiation (base exp) (-( exponent exp) 1)))))
+        (t (error "unknown expression type -- DERIV"))))
+        
