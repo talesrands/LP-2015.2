@@ -36,8 +36,8 @@
     (dotimes (x 10 (reverse res))
       (push x res))))
 
-(defun range (a b)
-  (loop for x from a to b collect x))
+(defun range (d &optional (b 0) (c 1))
+        (loop repeat d for a from b by c collect a))
 
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
