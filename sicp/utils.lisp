@@ -11,3 +11,13 @@
  (when (< min  max) 
   (cons min (range-2 :max max :min (+ min step) :step step))))
 
+
+(defun steps-number (max min step)
+  (if (= (mod (- max min) step) 0)
+      (/ (- (- max step) min) step)
+      (/ (- max min) step)))
+
+(defun range-3 (&key (min 0) max (step 1))
+  (loop for x from 0 to (steps-number max min step)
+	collect (+ min (* x step))))
+

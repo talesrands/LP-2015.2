@@ -31,6 +31,7 @@
 	(my-sqrt-2 x guess (improve guess x)))))
 
 
+
 ;; to test
 ;; http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/
 
