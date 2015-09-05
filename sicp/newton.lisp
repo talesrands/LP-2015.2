@@ -5,8 +5,12 @@
 (defun average (x y)
   (/ (+ x y) 2))
 
-(defun improve (guess x)
+(defun improve-1 (guess x)
   (average guess (/ x guess)))
+
+(defun improve-2 (guess x)
+  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3))
+
 
 (defun sqrt-iter (guess x)
   (if (good-enough? guess x)
@@ -23,22 +27,17 @@
       guess
       (my-sqrt-1 x guess (improve guess x))))
 
-(defun my-sqrt-2 (x &optional (previous-guess 0.0) (guess 1.0))
+
+(defun my-sqrt-2 (x &key (previous-guess 0.0) (guess 1.0) (func-improve 'improve-1)
+		      (precision 0.001))
   (labels ((good? (previous-guess guess)
-	     (< (abs (- guess previous-guess)) 0.001)))
+	     (< (abs (- guess previous-guess)) precision)))
     (if (good? previous-guess guess)
 	guess
-	(my-sqrt-2 x guess (improve guess x)))))
+	(my-sqrt-2 x :previous-guess guess :guess (funcall func-improve guess x)
+		   :func-improve func-improve :precision precision))))
 
-(defun improve-2 (guess x)
-  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3))
-  
-(defun my-cbrt-3 (x &optional (guess 1.0) (previous-guess 0.0))
-  (labels ((good? (previous-guess guess)
-		  (< (abs (- guess previous-guess)) 0.0001)))
-	  (if (good? previous-guess guess)
-	      guess
-	    (my cbrt-3 x guess (improve-2 guess x)))))
+
 
 
 ;; to test
