@@ -5,7 +5,7 @@
 * Tópicos
 
 - https://www.hackerrank.com/worldcup
-- Corrigir submissões
-- Gerador de sentenças em EN.
+- Corrigi submissões
+
 
 

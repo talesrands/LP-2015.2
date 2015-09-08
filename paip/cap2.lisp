@@ -1,3 +1,4 @@
+
 (defun sentence ()  (append (noun-phrase) (verb-phrase)))
 (defun noun-phrase () (append (Article) (Noun)))
 (defun verb-phrase () (append (Verb) (noun-phrase)))
@@ -10,6 +11,7 @@
 
 (defun random-elt (choices)
   (elt choices (random (length choices))))
+
 
 (defun Adj* ()
   (if (= (random 2) 0)
@@ -27,6 +29,7 @@
 (defun Prep () (one-of '(big little blue green adiabatic)))
 (defun Prep () (one-of '(to in by with on)))
 
+
 (defparameter *simple-grammar*
   '((sentence -> (noun-phrase verb-phrase))
     (noun-phrase -> (Article Noun))
@@ -36,6 +39,6 @@
     (Verb -> hit took saw liked))
   "A grammar for a trivial subset of English.")
 
+
 (defvar *grammar* *simple-grammar*
-  "The grammar used by generate. Initially,this is 
-  *simple-grammar*, but we can switch to other grammars.")
+  "The grammar used by generate.")
