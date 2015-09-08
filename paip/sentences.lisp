@@ -1,4 +1,3 @@
-;;; -*- Mode: Lisp; Syntax: Common-Lisp -*-
 ;;; Code from Paradigms of Artificial Intelligence Programming
 ;;; Copyright (c) 1991 Peter Norvig
 ;;; Website http://norvig.com/paip.html
@@ -41,3 +40,15 @@
 (defun Prep ()
   (one-of '(to in by with on)))
 
+
+(defparameter *simple-grammar*
+  '((sentence -> (noun-phrase verb-phrase))
+    (noun-phrase -> (Article Noun))
+    (verb-phrase -> (Verb noun-phrase))
+    (Article -> the a)
+    (Noun -> man ball woman table)
+    (Verb -> hit took saw liked))
+  "A grammar for a trivial subset of English.")
+
+
+(defvar *grammar* *simple-grammar*)
