@@ -1,5 +1,5 @@
 (defun sentence ()    (append (noun-phrase) (verb-phrase)))
-(defun noun-phrase () (append (Noun) (Adj*)))
+(defun noun-phrase () (append (Noun)))
 (defun verb-phrase () (append (Verb) (noun-phrase)))
 (defun Article-masc ()     (one-of '(o um)))
 (defun Article-fem ()     (one-of '(a uma)))
