@@ -35,3 +35,42 @@
 (defun Noun-masc () (one-of '(homem cachorro gato predador militar matematico engenheiro mendigo psicologo lucas leonardo rafael fellipe astronauta caio otavio secretario medico professor garçom advogado neymar alexandre)))
 
 (defun Noun-fem () (one-of '(mulher cadela gata isabela secretaria esposa predadora engenheira psicologa medica professora kaline)))
+
+(defparameter *simple-grammar*
+   '((sentence -> (noun-phrase verb-phrase))
+     (noun-phrase -> (Article Noun))
+     (verb-phrase ->(Verb noun-phrase))
+     (Article -> o a um uma)
+     (Noun -> menino homem)
+     (Verb -> abraçou empurrou))))
+   
+(defvar *grammar* *simple-grammar* "Thegrammarusedbygenerate. Initially,thisis *simple-grammar*, but we can switch to other grammars.")
+
+(defun rule-lhs (rule)
+  "The left-hand side of a rule."
+  (first rule))
+
+(defun rule-rhs (rule)
+  "The right-hand side of a rule."
+  (rest (rest rule)))
+
+(defun rewrites (category)
+  "Return a list of the possible rewrites for this category."
+  (rule-rhs (assoc category *grammar*)))
+
+
+(defun generate (phrase)
+  "Generate a random sentence or phrase"
+  (if (listp phrase)
+      (mappend #'generate phrase)
+      (let ((choices (rewrites phrase)))
+	(if (null choices) (list phrase)
+	    (generate (random-elt choices))))))
+
+
+(defun mappend (fn the-list)
+  "Apply fn t o each element of l i s t and append the results."
+  (apply #'append (mapcar fn the-list)))
+
+(defun random-elt (choices)
+    (elt choices (random (length choices))))
