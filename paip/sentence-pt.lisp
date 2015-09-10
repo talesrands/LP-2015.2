@@ -37,14 +37,26 @@
 (defun Noun-fem () (one-of '(mulher cadela gata isabela secretaria esposa predadora engenheira psicologa medica professora kaline)))
 
 (defparameter *simple-grammar*
+  '((sentence -> (noun-phrase verb-phrase))
+    (noun-phrase -> (Article Noun))
+    (verb-phrase -> (Verb noun-phrase))
+    (Article -> o a um uma)
+    (Noun -> menino homem)
+    (Verb -> abraçou empurrou)))
+
+(defparameter *grammar-pt*
    '((sentence -> (noun-phrase verb-phrase))
-     (noun-phrase -> (Article Noun))
-     (verb-phrase ->(Verb noun-phrase))
-     (Article -> o a um uma)
-     (Noun -> menino homem)
-     (Verb -> abraçou empurrou))))
-   
-(defvar *grammar* *simple-grammar* "Thegrammarusedbygenerate. Initially,thisis *simple-grammar*, but we can switch to other grammars.")
+     (noun-phrase -> masculino feminino)
+     (masculino -> (Article-masculino Noun-masculino))
+     (feminino -> (Article-feminino Noun-feminino))
+     (verb-phrase -> (Verb noun-phrase))
+     (Article-masculino -> o um)
+     (Noun-masculino -> homem menino rapaz)
+     (Article-feminino -> a uma)
+     (Noun-feminino -> mulher menina garota)
+     (Verb -> abraçou empurrou)))
+
+(defvar *grammar* *grammar-pt* "Thegrammarusedbygenerate. Initially,thisis *grammar-pt*, but we can switch to other grammars.")
 
 (defun rule-lhs (rule)
   "The left-hand side of a rule."
@@ -58,7 +70,6 @@
   "Return a list of the possible rewrites for this category."
   (rule-rhs (assoc category *grammar*)))
 
-
 (defun generate (phrase)
   "Generate a random sentence or phrase"
   (if (listp phrase)
@@ -69,8 +80,8 @@
 
 
 (defun mappend (fn the-list)
-  "Apply fn t o each element of l i s t and append the results."
+  "Apply fn t o each element of list and append the results."
   (apply #'append (mapcar fn the-list)))
 
 (defun random-elt (choices)
-    (elt choices (random (length choices))))
+  (elt choices (random (length choices))))
