@@ -1,0 +1,14 @@
+#+Title: Aula 15
+#+Date: <2015-09-09 Wed>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+- Tirei dúvidas dos exercícios anteriores.
+- Reforcei como deve ser o uso do git para sincronização dos
+  repositórios.
+- Falamos do capítulo 2 /Simple Lisp Program/ do PAIP.
+
+
+
+
