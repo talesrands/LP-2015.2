@@ -1,0 +1,18 @@
+#+Title: Aula 16
+#+Date: <2015-09-11 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Tirei dúvidas sobre o =mappend= e outras funções auxiliares usadas
+pelo gerador de sentenças. Fizemos o debug da função =generate= de
+geração de sentenças.
+
+Falamos mais uma vez sobre as regras de avaliação de CL e quando
+precisamos usar =quote=.
+
+Falamos sobre o site hackerrank. No final da aula um aluno me chamou
+atenção para um dos problemas, resolvi agora e postei:
+
+https://www.hackerrank.com/challenges/fp-list-replication
+
