@@ -34,6 +34,21 @@
     (noun -> man ball woman table)
     (verb -> hit took saw liked))
   "A grammar for a trivial subset of English.")
+  
+(defparameter *bigger-gramar*
+  '((sentence -> (noun-phrase verb-phrase)
+  	(noun-phrase -> (article adj* noun pp*) (name) (pronoun))
+  	(verb-phrase -> (verb noun-phrase pp*))
+  	(pp* -> ()(pp pp*))
+  	(adj* -> () (adj adj*))
+  	(pp -> (prep noun-phrase))
+  	(prep -> in by to on with)
+  	(adj -> big little blue green adiabatic)
+  	(article -> the a)
+  	(name -> Pat Kim Lee Terry Robin)
+  	(noun -> man ball woman table)
+  	(verb -> hit took saw liked)
+  	(pronoun -> he she it these those that))))
 
 (defparameter *grammar-pt*
    '((sentence          -> (noun-phrase verb-phrase))
