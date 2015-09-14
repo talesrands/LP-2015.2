@@ -16,6 +16,16 @@
   "Return a list of the possible rewrites for this category."
   (rule-rhs (assoc category *grammar*)))
 
+
+(defun generate-1 (phrase)
+  "Explit tests but call rewrites twice!"
+  (cond
+    ((listp phrase)
+     (mappend #'generate-1 phrase))
+    ((rewrites phrase)
+     (generate-1 (random-elt (rewrites phrase))))
+    (t (list phrase))))
+
 (defun generate (phrase)
   "Generate a random sentence or phrase"
   (if (listp phrase)
