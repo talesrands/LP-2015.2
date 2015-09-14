@@ -2,6 +2,8 @@
 ;;; Copyright (c) 1991 Peter Norvig
 ;;; Website http://norvig.com/paip.html
 
+(in-package :chapter-1)
+
 (defun sentence ()    (append (noun-phrase) (verb-phrase)))
 (defun noun-phrase () (append (article) (noun)))
 (defun verb-phrase () (append (verb) (noun-phrase)))
@@ -12,24 +14,24 @@
 
 (defun adj* ()
   "problema!"
-  (one-of '(nil (append (Adj) (Adj*)))))
+  (one-of '(nil (append (adj) (adj*)))))
 
 (defun adj* ()
   "problema!"
-  (one-of (list nil (append (Adj) (Adj*)))))
+  (one-of (list nil (append (adj) (adj*)))))
 
 (defun adj* ()
   (if (= (random 2) 0)
       nil
-      (append (Adj) (Adj*))))
+      (append (adj) (adj*))))
 
 (defun pp* ()
   (if (random-elt '(t nil))
-      (append (PP) (PP*))
+      (append (pp) (pp*))
       nil))
 
 (defun pp ()
-  (append (Prep) (noun-phrase)))
+  (append (prep) (noun-phrase)))
 
 (defun adj ()
   (one-of '(big little blue green adiabatic)))

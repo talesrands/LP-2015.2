@@ -1,3 +1,8 @@
+;;; Code from Paradigms of Artificial Intelligence Programming
+;;; Copyright (c) 1991 Peter Norvig
+;;; Website http://norvig.com/paip.html
+
+(in-package :utils)
 
 (defun one-of (set)
   "Pick one element of set, and make a list of it."

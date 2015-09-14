@@ -1,3 +1,8 @@
+;;; Code from Paradigms of Artificial Intelligence Programming
+;;; Copyright (c) 1991 Peter Norvig
+;;; Website http://norvig.com/paip.html
+
+(in-package :chapter-1)
 
 (defun rule-lhs (rule)
   "The left-hand side of a rule."

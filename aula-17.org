@@ -1,0 +1,51 @@
+#+Title: Aula 16
+#+Date: <2015-09-11 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Sobre sharp-quote, um bom argumento a favor está [[http://endlessparentheses.com/get-in-the-habit-of-using-sharp-quote.html][aqui]]. 
+
+#+BEGIN_SRC lisp
+(defun teste (alist)
+  (apply #'mysum alist))
+
+(defun teste (alist)
+  (apply 'mysum alist))
+#+END_SRC
+
+Sobre declaração de variáveis, devemos evitar 'pensar' de forma
+imperativa. A primeira função abaixo tem uma abordagem imperativa,
+definindo =b= como uma variável dinâmica. A segunda abordagem define
+uma variável local, dentro de um escopo léxico bem
+definido. Obviamente, os exemplos são bem simples apenas para ilustrar
+a diferença na declaração de variáveis. No primeiro caso, =b= passa a
+existir fora do escopo da função, o que é ruim.
+
+#+BEGIN_SRC lisp
+  (defun teste (n)
+    (setq b n)
+    n)
+
+  (defun teste-1 (n)
+    (let ((a n))
+      a))
+#+END_SRC
+
+Exemplo do =format= que encotramos durante explicação da minha solução
+no hackerrank.com:
+
+#+BEGIN_SRC lisp
+(format t "~{~d~^, ~} e tal coisa ~d" (list 1 2 3) 2)
+#+END_SRC
+
+Finalmente falamos de pacotes e rearrumamos o código do cap. 1 em dois
+pacotes. Próxima aula falarmos a definição de sistemas. Vide leituras.
+
+* Leituras obrigatórias
+
+- [[http://www.gigamonkeys.com/book/variables.html][Variáveis]] (PCL)
+- [[http://www.flownet.com/gat/packages.pdf][The Complete Idiot’s Guide to Common Lisp Packages]]
+- [[http://www.flownet.com/gat/specials.pdf][The Idiot's Guide to Special Variables and Lexical Closures]]
+- [[http://weitz.de/packages.html][Packages, systems, modules, libraries - WTF?]]
+
