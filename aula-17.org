@@ -1,5 +1,5 @@
 #+Title: Aula 16
-#+Date: <2015-09-11 Fri>
+#+Date: <2015-09-14 Mon>
 #+Author: Alexandre Rademaker
 
 * Tópicos

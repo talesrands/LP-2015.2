@@ -1,0 +1,32 @@
+#+Title: Aula 18
+#+Date: <2015-09-18 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos do exercício proposto pelo Rafael. Terminei apresentação a
+função repeat abaixo como uma alternativa possível. Em especial, notar
+o uso do argumento =:initial-value= na função =reduce= para garantir
+que a função introduzida com a forma =lambda= tenha assinatura
+necessária =string number -> string=.
+
+#+BEGIN_SRC lisp
+(defun repeat (n k)
+  (parse-integer (reduce (lambda (a-string a-number)
+			   (format nil "~a~a" a-string a-number)) 
+			 (loop for x from 1 to n collect k)
+			 :initial-value "")))
+#+END_SRC
+
+Falamos de ASDF e como definir sistemas. Definimos o arquivo
+=paip.asd=. Depois disso começamos a arrumar o código adaptando-o a
+nova definição de pacotes e do sistema. Vide cláusulas de =export= no
+=packages.lisp=.
+
+Terminei deixando problemas para serem resolvidos, a função =generate=
+ainda não funciona quando chamada fora do pacote =chapter-1=.
+
+* Observação
+
+Não tivemos aula na quarta-feira. Avisei os alunos por email.
+

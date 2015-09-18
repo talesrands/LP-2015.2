@@ -17,13 +17,13 @@
   (rule-rhs (assoc category *grammar*)))
 
 
-(defun generate-1 (phrase)
+(defun generate (phrase)
   "Explit tests but call rewrites twice!"
   (cond
     ((listp phrase)
-     (mappend #'generate-1 phrase))
+     (mappend #'generate phrase))
     ((rewrites phrase)
-     (generate-1 (random-elt (rewrites phrase))))
+     (generate (random-elt (rewrites phrase))))
     (t (list phrase))))
 
 (defun generate (phrase)
