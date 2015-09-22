@@ -10,4 +10,4 @@
 	       (:file "utils"          :depends-on ("packages"))
 	       (:file "sentence-1"     :depends-on ("utils"))
 	       (:file "sentence-2"     :depends-on ("utils"))
-	       (:file "generate-tree"  :depends-on ("utils"))))
+	       (:file "gps-1"          :depends-on ("utils"))))

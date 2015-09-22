@@ -36,6 +36,16 @@
 	    (generate (random-elt choices))))))
 
 
+(defun generate-tree (phrase)
+  (cond 
+    ((list phrase)
+     (mapcar #'generate-tree phrase))
+    ((rewrites phrase)
+     (cons phrase
+	   (generate-tree (random-elt (rewrites phrase)))))
+    (t (list phrase))))
+
+
 (defparameter *simple-grammar*
   '((sentence -> (noun-phrase verb-phrase))
     (noun-phrase -> (article noun))

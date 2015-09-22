@@ -1,0 +1,58 @@
+#+Title: Aula 19
+#+Date: <2015-09-21 Mon>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos sobre challenge =super-digit= dentro de recursion e functional
+programming do hackerrank.com. vide https://goo.gl/4ecFEU sobre
+modular arithmetic. Destaque para o uso da função =(read)= que Rafael
+descobriu!
+
+Mostrei como usei [[https://common-lisp.net/project/slime/doc/html/Profiling.html][profiling]] no Slime para descobrir a função que
+estava consumindo mais tempo e memória.
+
+Usando a dúvida do Felipe, discutimos recursão usando o exemplo da
+soma de números em uma lista.
+
+#+BEGIN_SRC lisp
+(defun sum (alist)
+  (if (null alist)
+      0
+      (+ (car alist) (sum (cdr alist)))))
+#+END_SRC
+
+Usando o mesmo exemplo, expliquei que o código acima falha quando a
+lista for muito grande. Basicamente o consumo de memória para guardar
+os estados intermediários é muito grande. Para evitar isso, usamos
+recursão de cauda.
+
+#+BEGIN_SRC lisp
+(defun sum (alist &optional (res 0))
+  (if (null alist)
+      res
+      (sum (cdr alist) (+ res (car alist)))))
+#+END_SRC
+
+Podemos ainda, ocultar o argumento auxiliar com uma função interna.
+
+#+BEGIN_SRC lisp
+(defun sum (alist)
+  (labels ((sum-aux (alist res)
+	     (if (null alist)
+		 res
+		 (sum-aux (cdr alist) (+ res (car alist))))))
+    (sum-aux alist 0)))
+#+END_SRC
+
+A primeira versão de =sum= não funciona com a entrada abaixo, a
+segunda funciona sem problema dado controlado consumo de memória.
+
+#+BEGIN_SRC lisp
+(sum (loop for i from 0 upto 1000000 collect i))
+#+END_SRC
+
+Vale a leitura do [[http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-1.html#node_toc_node_sec_9.1][cap. 9]] do http://www.htdp.org
+
+
+

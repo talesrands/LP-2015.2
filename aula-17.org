@@ -48,4 +48,5 @@ pacotes. Próxima aula falarmos a definição de sistemas. Vide leituras.
 - [[http://www.flownet.com/gat/packages.pdf][The Complete Idiot’s Guide to Common Lisp Packages]]
 - [[http://www.flownet.com/gat/specials.pdf][The Idiot's Guide to Special Variables and Lexical Closures]]
 - [[http://weitz.de/packages.html][Packages, systems, modules, libraries - WTF?]]
+- [[http://gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html][Programming in the Large: Packages and Symbols]]
 

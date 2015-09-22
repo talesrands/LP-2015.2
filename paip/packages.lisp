@@ -6,12 +6,19 @@
    #:random-elt
    #:cross-product
    #:mappend
-   #:combine-all))
+   #:combine-all
+   #:find-all
+   #:find-all-if))
 
 (defpackage :chapter-1
   (:use :utils :cl)
   (:export
-   #:generate))
+   #:generate
+   #:*grammar*))
+
+(defpackage :gps-1
+  (:use :utils :cl))
+
 
 
 

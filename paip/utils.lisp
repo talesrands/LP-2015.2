@@ -4,6 +4,8 @@
 
 (in-package :utils)
 
+(setf (symbol-function 'find-all-if) #'remove-if-not)
+
 (defun one-of (set)
   "Pick one element of set, and make a list of it."
   (list (random-elt set)))
@@ -15,6 +17,15 @@
 (defun mappend (fn the-list)
   "Apply fn t o each element of list and append the results."
   (apply 'append (mapcar fn the-list)))
+
+
+(defun find-all (item sequence &rest keyword-args
+		 &key (test #'eql) test-not &allow-other-keys)
+  (if test-not
+      (apply #'remove item sequence
+	     :test-not (complement test-not) keyword-args)
+      (apply #'remove item sequence
+	     :test (complement test) keyword-args)))
 
 
 (defun cross-product (fn xlist ylist)
