@@ -11,7 +11,7 @@
 (defstruct op "An operation"
   (action nil) (preconds nil) (add-list nil) (del-list nil))
 
-(defun GPS (*state* goals *ops*)
+(defun gps (*state* goals *ops*)
   "General Problem Solver: achieve all goals using *ops*."
   (if (every #'achieve goals) 'solved))
 
