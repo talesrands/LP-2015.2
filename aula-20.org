@@ -4,7 +4,16 @@
 
 * Tópicos
 
-Casos de sucesso:
+Discutir problema apontado pelo Tales do hackerrank.com
+
+#+BEGIN_SRC lisp
+  (with-open-file (s "teste.txt")
+    (let ((size (read s)))
+      (loop for x from 1 to size
+            sum (read s))))
+#+END_SRC
+
+Começar o capítulo GPS do livro PAIP
 
 #+BEGIN_SRC lisp
 (gps '(son-at-home car-needs-battery have-money have-phone-book) '(son-at-school) *school-ops*)
