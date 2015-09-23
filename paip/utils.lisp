@@ -47,6 +47,12 @@
   (loop for i from -1 to (1- (length part))
   	collect (insert-after (copy-list part) i element)))
   	
+(defun backtrack (part n newlist)
+  (if (= n (length part))
+      (list part)
+      (let*((candidates (construct-candidates part (car newlist))))
+	(apply 'append (mapcar 'backtrack candidates (make-list n :initial-element n) (make-list n :initial-element (cdr newlist)))))))  	
+  	
 (defun generate-permutations (alist)
   (backtrack nil (length alist) alist))
 
