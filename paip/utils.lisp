@@ -36,8 +36,18 @@
 
 (defun combine-all (xlist ylist)
   (cross-product #'append xlist ylist))
-  
+
+(defun insert-after (lst index newelt)
+  (cond ((null lst) (list newelt))
+	((= index -1) (cons newelt lst))
+	(t (push newelt (cdr (nthcdr index lst))) 
+	lst)))
+
 (defun construct-candidates (part element)
   (loop for i from -1 to (1- (length part))
   	collect (insert-after (copy-list part) i element)))
+  	
+(defun generate-permutations (alist)
+  (backtrack nil (length alist) alist))
+
 
