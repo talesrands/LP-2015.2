@@ -36,3 +36,8 @@
 
 (defun combine-all (xlist ylist)
   (cross-product #'append xlist ylist))
+  
+(defun construct-candidates (part element)
+  (loop for i from -1 to (1- (length part))
+  	collect (insert-after (copy-list part) i element)))
+
