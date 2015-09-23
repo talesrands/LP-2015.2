@@ -4,7 +4,11 @@
 
 * Tópicos
 
-Discutir problema apontado pelo Tales do hackerrank.com
+** Dúvidas
+
+Começamos discutindo o problema apontado pelo Tales com entrada e
+saída de dados no http://hackerrank.com. Usando o exemplo abaixo,
+expliquei o que são streams.
 
 #+BEGIN_SRC lisp
   (with-open-file (s "teste.txt")
@@ -13,22 +17,90 @@ Discutir problema apontado pelo Tales do hackerrank.com
             sum (read s))))
 #+END_SRC
 
-Começar o capítulo GPS do livro PAIP
+Depois falamos dos [[https://en.wikipedia.org/wiki/Standard_streams][streams padrão]] chamados: STDIN, STDOUT e
+STDERR. Finalmente contruímos um exemplo do que seria escrever um
+programa em Lisp para receber dados do STDIN e escrever no STDOUT
+assim como os programas no http://hackerrank.com fazem.
 
 #+BEGIN_SRC lisp
-(gps '(son-at-home car-needs-battery have-money have-phone-book) '(son-at-school) *school-ops*)
-(gps '(son-at-home car-works) '(son-at-school) *school-ops*)
-(gps '(son-at-home car-needs-battery have-money) '(son-at-school) *school-ops*)
+(let ((size (read)))
+  (format t "~a~%" (loop for x from 1 to size
+			 sum (read))))
+(quit)
 #+END_SRC
 
-Problemas. Segundo caso, o dinheiro foi usado.
+Para testar, basta criar um arquivo =entrada.txt= como duas linhas
+como:
+
+#+BEGIN_EXAMPLE
+6 
+1 21 4 5 13 4
+#+END_EXAMPLE
+
+E executar no prompt do seu computador:
+
+#+BEGIN_SRC sh
+sbcl --load teste.lisp < entrada.txt > saida.txt
+#+END_SRC
+
+O arquivo =saida.txt= deverá conter:
+
+#+BEGIN_EXAMPLE
+This is SBCL 1.2.15, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+48
+#+END_EXAMPLE
+
+Se usarmos o parâmetro =script= ao invés de =load=, temos a saída
+menos verbosa contendo apenas o valor =48=.
+
+#+BEGIN_SRC sh
+sbcl --script lixo.lisp < entrada.txt > saida.txt 
+#+END_SRC
+
+** GPS
+
+Começamos o capítulo GPS do livro PAIP. Depois de apresentar o
+problema e a primeira versão do código, testamos as execuções:
 
 #+BEGIN_SRC lisp
-(gps '(son-at-home have-money car-works) '(have-money son-at-school) *school-ops*) 
-(gps '(son-at-home have-money car-needs-battery have-phone-book) '(have-money son-at-school) *school-ops*) 
+  (gps '(son-at-home car-needs-battery have-money have-phone-book)
+       '(son-at-school) *school-ops*)
+
+  (gps '(son-at-home car-works) '(son-at-school) *school-ops*)
+
+  (gps '(son-at-home car-needs-battery have-money)
+       '(son-at-school) *school-ops*)
 #+END_SRC
 
-Discutir outros problemas.
+Falei sobre as adaptações que fiz no código para coloca-lo em nosso
+sistema =paip= e começamos a discutir os problemas destas primeira
+versão de =gps=.
+
+#+BEGIN_SRC lisp
+  (gps '(son-at-home have-money car-works) '(have-money son-at-school)
+       ,*school-ops*) 
+
+  (gps '(son-at-home have-money car-needs-battery have-phone-book)
+       '(have-money son-at-school) *school-ops*) 
+
+  (gps '(son-at-home have-money car-needs-battery have-phone-book)
+       '(son-at-school have-money) *school-ops*)
+#+END_SRC
+
+Nos dois últimos casos acima temos um problema, a ordem dos goals não
+deveria importar e o segundo caso, na realidade, é um erro ter sido
+sucesso. 
+
+* Tarefas
+
+Para a próxima aula, procurem avançar no capítulo e já ir pensando nos
+exercícios.
 
 
 

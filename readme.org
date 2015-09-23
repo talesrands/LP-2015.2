@@ -40,3 +40,13 @@ Vide arquivos no repo das aulas.
   - Tutorial [[https://www6.software.ibm.com/developerworks/education/l-emacs/l-emacs-ltr.pdf][Living in Emacs]] 
 - controle de versão :: https://git-scm.com 
   - https://github.com
+
+* Sites interessantes 
+
+- https://projecteuler.net
+- http://hackerrank.com
+- [[https://xianblog.wordpress.com/2015/09/10/le-monde-puzzle-928/][Blog sobre Le Monde Puzzles]]
+
+
+
+  
