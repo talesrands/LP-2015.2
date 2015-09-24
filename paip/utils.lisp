@@ -37,23 +37,23 @@
 (defun combine-all (xlist ylist)
   (cross-product #'append xlist ylist))
 
-(defun insert-after (lst index newelt)
-  (cond ((null lst) (list newelt))
-	((= index -1) (cons newelt lst))
-	(t (push newelt (cdr (nthcdr index lst))) 
-	lst)))
+(defun insert (lst index newelement)
+  (cond ((null lst) (list newelement))
+	((= 0 index) (cons newelement lst))
+	(t (push newelement (cdr (nthcdr (1- index) lst))) 
+	   lst)))
 
 (defun construct-candidates (part element)
-  (loop for i from -1 to (1- (length part))
-  	collect (insert-after (copy-list part) i element)))
-  	
-(defun backtrack (part n newlist)
+  (loop for i from 0 to (length part)
+       collect (insert (copy-list part) i element)))
+
+(defun permutations-backtrack (part n newlist)
   (if (= n (length part))
       (list part)
       (let*((candidates (construct-candidates part (car newlist))))
-	(apply 'append (mapcar 'backtrack candidates (make-list n :initial-element n) (make-list n :initial-element (cdr newlist)))))))  	
-  	
+	(apply 'append (mapcar 'permutations-backtrack candidates (make-list n :initial-element n) (make-list n :initial-element (cdr newlist)))))))  
+
 (defun generate-permutations (alist)
-  (backtrack nil (length alist) alist))
+ (permutations-backtrack nil (length alist) alist))
 
 
