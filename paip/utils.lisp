@@ -37,11 +37,13 @@
 (defun combine-all (xlist ylist)
   (cross-product #'append xlist ylist))
 
-(defun insert (lst index newelement)
-  (cond ((null lst) (list newelement))
-	((= 0 index) (cons newelement lst))
-	(t (push newelement (cdr (nthcdr (1- index) lst))) 
-	   lst)))
+(defun insert (lst value index)
+  (labels ((insert-aux (lst lst-value index left)
+	   (if (zerop index)
+	       (append left lst-value lst)
+	       (insert-aux (cdr lst) lst-value (1- index)
+	           (append left (list (car lst)))))))
+    (insert-aux lst (list value) index nil)))
 
 (defun construct-candidates (part element)
   (loop for i from 0 to (length part)
