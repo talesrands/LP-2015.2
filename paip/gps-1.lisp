@@ -12,8 +12,13 @@
   (action nil) (preconds nil) (add-list nil) (del-list nil))
 
 (defun gps (*state* goals *ops*)
-  "General Problem Solver: achieve all goals using *ops*."
   (if (every #'achieve goals) 'solved))
+
+(defun gps (*state* goals *ops*)
+  (if (achieve-all goals) 'solved))
+
+(defun achieve-all (goals)
+  (and (every #'achieve goals) (subsetp goals *state*)))
 
 (defun achieve (goal)
   "A goal is achieved if it already holds,
@@ -57,7 +62,13 @@
    (make-op :action 'give-shop-money
 	    :preconds '(have-money)
 	    :add-list '(shop-has-money)
-	    :del-list '(have-money))))
+	    :del-list '(have-money))
+   ; created for testing 
+   (make-op :action 'ask-phone-number
+	    :preconds '(in-communication-with-shop)
+	    :add-list '(know-phone-number))))
+
+
 
 
 
