@@ -83,4 +83,4 @@
         (t (print 'loop)
 	   (loop for element in list
 		 append (mapcar (lambda (l) (cons element l))
-				(permutations (remove element list)))))))
+				(permutations (remove element list :count 1)))))))
