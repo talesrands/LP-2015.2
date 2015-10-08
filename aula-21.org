@@ -1,0 +1,8 @@
+#+Title: Aula 21
+#+Date: <2015-09-25 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Erros do primeiro GPS.
+

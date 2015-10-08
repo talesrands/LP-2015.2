@@ -1,0 +1,83 @@
+#+Title: Aula 23
+#+Date: <2015-10-07 Wed>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Terminamos o capítulo do GPS falando como a versão 2 corrigi os
+problemas da versão 1.
+
+Falei bastante sobre debug mostrando recursos do Emacs e [[https://common-lisp.net/project/slime/][Slime]] para
+navegação pelo código, debug, inspeção de valores etc.
+
+Basicamente, cobrindo os tópicos dos posts sobre [[http://malisper.me/2015/08/19/debugging-lisp-part-5-miscellaneous/][Debugging Lisp]] do
+Michael Malis.
+
+Agora o código GPS está bem completo. O primeiro passo para rodar é
+carregar com:
+
+#+BEGIN_SRC lisp
+(ql:quickload :paip)
+#+END_SRC
+
+Em seguida, devemos mudar para o pacote =gps-test=, vejam definição do
+pacote no arquivo =packages.lisp=. Mudar de pacote fazemos com
+=(in-package :gps-test)=. 
+
+Finalmente podemos testar os dois exemplos.
+
+#+BEGIN_SRC lisp :package "gps-test" :results output
+  (format t "~{~a~%~}" (gps '(son-at-home car-needs-battery have-money have-phone-book)
+                            '(son-at-school)
+                          ,*school-ops*))
+#+END_SRC
+
+#+RESULTS:
+: (start)
+: (executing look-up-number)
+: (executing telephone-shop)
+: (executing tell-shop-problem)
+: (executing give-shop-money)
+: (executing shop-installs-battery)
+: (executing drive-son-to-school)
+
+E o exemplo do labirinto também pode ser executado com a linha abaixo,
+neste caso, a saída aqui no [[http://orgmode.org][org-mode]] de listas com sub listas é na
+forma de tabela:
+
+#+BEGIN_SRC lisp :package "gps-test" :results value
+(gps '((at 1)) '((at 25)) *maze-ops*)
+#+END_SRC
+
+#+RESULTS:
+| gps-2::start     |                      |
+| gps-2::executing | (move from 1 to 2)   |
+| gps-2::executing | (move from 2 to 3)   |
+| gps-2::executing | (move from 3 to 4)   |
+| gps-2::executing | (move from 4 to 9)   |
+| gps-2::executing | (move from 9 to 8)   |
+| gps-2::executing | (move from 8 to 7)   |
+| gps-2::executing | (move from 7 to 12)  |
+| gps-2::executing | (move from 12 to 11) |
+| gps-2::executing | (move from 11 to 16) |
+| gps-2::executing | (move from 16 to 17) |
+| gps-2::executing | (move from 17 to 22) |
+| gps-2::executing | (move from 22 to 23) |
+| gps-2::executing | (move from 23 to 24) |
+| gps-2::executing | (move from 24 to 19) |
+| gps-2::executing | (move from 19 to 20) |
+| gps-2::executing | (move from 20 to 25) |
+| at               | 25                   |
+
+
+* Para pensar
+
+- Por que criei um pacote chamado =gps-test=, alguém consegue pensar
+  em algum argumento?
+
+- Por que no =gps-school.lisp= precisei usar =#'gps-2::convert-op= na
+  conversão da lista de operações do problema? Por que o prefixo
+  =gps::=?
+
+
+

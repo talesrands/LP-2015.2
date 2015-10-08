@@ -8,7 +8,11 @@
    #:mappend
    #:combine-all
    #:find-all
-   #:find-all-if))
+   #:find-all-if
+   #:dbg
+   #:debug-on
+   #:debug-off
+   #:dbg-indent))
 
 (defpackage :chapter-1
   (:use :utils :cl)
@@ -19,7 +23,17 @@
 (defpackage :gps-1
   (:use :utils :cl))
 
+(defpackage :gps-2
+  (:use :utils :cl)
+  (:export
+   #:op
+   #:make-op
+   #:op-add-list
+   #:op-del-list
+   #:op-preconds
+   #:op-action
+   #:gps
+   #:use))
 
-
-
-
+(defpackage :gps-test
+  (:use :utils :cl :gps-2))

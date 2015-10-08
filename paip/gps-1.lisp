@@ -63,12 +63,7 @@
 	    :preconds '(have-money)
 	    :add-list '(shop-has-money)
 	    :del-list '(have-money))
-   ; created for testing 
+   ; will cause loop
    (make-op :action 'ask-phone-number
 	    :preconds '(in-communication-with-shop)
 	    :add-list '(know-phone-number))))
-
-
-
-
-
