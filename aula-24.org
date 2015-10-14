@@ -1,0 +1,13 @@
+#+Title: Aula 24
+#+Date: <2015-10-09 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+- [[https://groups.google.com/forum/#!topic/comp.lang.lisp/eRzSelkdepM][Discussão sobre export de estruturas]]
+- Terminamos discussões GPS
+- Começamos cap. Eliza, apresentação geral
+
+
+
+

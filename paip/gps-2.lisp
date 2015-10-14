@@ -4,8 +4,12 @@
 
 (in-package :gps-2)
 
-
 (defvar *ops* nil "A list of available operators.")
+
+(defstruct op
+  "An operation"
+  (action nil) (preconds nil) (add-list nil) (del-list nil))
+
 
 (defun executing-p (x)
   "Is x of the form: (executing ...) ?"
@@ -27,9 +31,7 @@
     (make-op :action action :preconds preconds
              :add-list add-list :del-list del-list)))
 
-(defstruct op
-  "An operation"
-  (action nil) (preconds nil) (add-list nil) (del-list nil))
+
 
 (defun gps (state goals &optional (*ops* *ops*))
   "General Problem Solver: from state, achieve goals using *ops*."

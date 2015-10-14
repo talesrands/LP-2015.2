@@ -13,4 +13,5 @@
 	       (:file "gps-1"          :depends-on ("utils"))
 	       (:file "gps-2"          :depends-on ("utils"))
 	       (:file "gps-maze"       :depends-on ("gps-2"))
-	       (:file "gps-school"     :depends-on ("gps-2"))))
+	       (:file "gps-school"     :depends-on ("gps-2"))
+	       (:file "eliza"          :depends-on ("utils"))))

@@ -37,3 +37,6 @@
 
 (defpackage :gps-test
   (:use :utils :cl :gps-2))
+
+(defpackage :eliza
+  (:use :cl :utils))

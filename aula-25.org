@@ -1,0 +1,12 @@
+#+Title: Aula 24
+#+Date: <2015-10-14 Wed>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+- Apresentação Eliza
+
+* Tarefas
+
+- Trocar a-list por hashtable na implementação de Eliza.
+
