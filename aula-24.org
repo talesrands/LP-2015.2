@@ -6,7 +6,9 @@
 
 - [[https://groups.google.com/forum/#!topic/comp.lang.lisp/eRzSelkdepM][Discussão sobre export de estruturas]]
 - Terminamos discussões GPS
-- Começamos cap. Eliza, apresentação geral
+- Começamos cap. Eliza, apresentação geral.
+
+
 
 
 

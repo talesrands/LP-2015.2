@@ -4,9 +4,12 @@
 
 * Tópicos
 
-- Apresentação Eliza
+Apresentamos as funções iniciais do Eliza, os conceitos básicos de
+casamento de padrões e binding de variáveis.
 
 * Tarefas
 
-- Trocar a-list por hashtable na implementação de Eliza.
+- Deixei como tópico para pesquisa e reflexão o quão simples seria
+  trocar a implementação de bindings de alist para hashtable.
+
 

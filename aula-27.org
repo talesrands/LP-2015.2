@@ -1,0 +1,12 @@
+#+Title: Aula 24
+#+Date: <2015-10-16 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Continuamos a apresentação do Eliza discutindo a primeira versão de
+=segment-match=, solução para permitir que mais de um token do input
+possam ser 'casados' com uma variável no pattern.
+
+Terminamos a aula mostrando as limitações desta versão e sugerindo que
+os alunos se antecipassem na discussão dos problemas do capítulo.

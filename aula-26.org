@@ -1,0 +1,10 @@
+#+Title: Aula 24
+#+Date: <2015-10-14 Wed>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Continuamos discutindo o Eliza, avançando nos conceitos de pattern
+matching. Falamos sobre as versões de =pat-match= que resolvem os
+problemas apresentados pela primeira versão.
+

@@ -28,6 +28,16 @@
 	     :test (complement test) keyword-args)))
 
 
+(defun flatten (the-list)
+  "Append together elements (or lists) in the list."
+  (mappend #'mklist the-list))
+
+(defun mklist (x)
+  "Return x if it is a list, otherwise (x)."
+  (if (listp x)
+      x
+      (list x)))
+
 (defun cross-product (fn xlist ylist)
   (mappend #'(lambda (y)
 	       (mapcar #'(lambda (x) (funcall fn x y))
@@ -57,6 +67,9 @@
 	           (append left (list (car lst)))))))
     (insert-aux lst (list value) index nil)))
 
+
+(defun starts-with (list x)
+  (and (consp list) (eql (first list) x)))
 
 ;; (all-permutations '(1 1 2))
 ;; (all-permutations '(1 1))

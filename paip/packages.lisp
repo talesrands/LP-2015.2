@@ -12,7 +12,8 @@
    #:dbg
    #:debug-on
    #:debug-off
-   #:dbg-indent))
+   #:dbg-indent
+   #:starts-with))
 
 (defpackage :chapter-1
   (:use :utils :cl)

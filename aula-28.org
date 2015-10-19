@@ -1,0 +1,34 @@
+#+Title: Aula 24
+#+Date: <2015-10-19 Mon>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos sobre o uso de hashtable ao invés de alist para os bindings e
+os problemas relacionados à esta alteração que eu havia sugerido na
+aula anterior. Fechamos o issue sobre isso.
+
+Terminamos apresentação do Eliza. Discutimos bastante as função
+=pat-match=, =segment-match= e =match-variable= fazendo o trace de
+suas execuções principalmente com o exemplo:
+
+#+BEGIN_EXAMPLE
+(pat-match '((?* ?x) a b (?* ?x)) '(1 2 a b a b 1 2 a b))
+#+END_EXAMPLE
+
+Com este exemplo, explorarmos a segunda versão de =segment-match= e a
+diferença desta versão em relação à anterior.
+
+Terminamos a aula rodando alguns exemplos de interação com Eliza.
+
+
+* Tarefas
+
+- Nossa constante =+no-bindings+= parece estar causando algum tipo de
+  problema quando carregamos o pacote no SBCL. A explicação sobre este
+  erro pode ser encontrada na seção [[http://www.sbcl.org/manual/#Defining-Constants][Defining Constants]] do manual de
+  SBC. Proponho que os alunos leiam e entendam a explicação desta
+  seção. Na próxima aula irei chamar um aluno para explicar o que
+  entendeu.
+
+
