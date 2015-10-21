@@ -13,7 +13,8 @@
    #:debug-on
    #:debug-off
    #:dbg-indent
-   #:starts-with))
+   #:starts-with
+   #:flatten))
 
 (defpackage :chapter-1
   (:use :utils :cl)
@@ -40,4 +41,9 @@
   (:use :utils :cl :gps-2))
 
 (defpackage :eliza
-  (:use :cl :utils))
+  (:use :cl :utils)
+  (:export
+   #:eliza))
+
+(defpackage :eliza-test
+  (:use :cl :utils :eliza))
