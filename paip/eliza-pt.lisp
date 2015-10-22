@@ -1,6 +1,6 @@
 (in-package :eliza-test)
 
-(defparameter *eliza-rules*
+(defparameter *eliza-rules-pt*
   '((((?* ?x) Ola (?* ?y))
      (Ola eu sou a Eliza. Qual o seu nome?))
     (((?* ?x) Eu me chamo (?* ?y))
