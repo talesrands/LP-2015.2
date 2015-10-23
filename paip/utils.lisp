@@ -68,8 +68,20 @@
     (insert-aux lst (list value) index nil)))
 
 
+(defun eql-by-name-if-symbol (a b)
+  (if (and (symbolp a) (symbolp b))
+      (equal (symbol-name a)
+	     (symbol-name b))
+      (eql a b)))
+
 (defun starts-with (list x)
   (and (consp list) (eql (first list) x)))
+
+(defun starts-with (list x)
+  "Is this a list whose first element is x?"
+  (and (consp list)
+       (eql-by-name-if-symbol (first list) x)))
+
 
 ;; (all-permutations '(1 1 2))
 ;; (all-permutations '(1 1))

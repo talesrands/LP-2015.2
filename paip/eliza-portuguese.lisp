@@ -1,3 +1,4 @@
+
 (in-package :eliza-test)
 
 (defparameter *eliza-rules-pt*
@@ -45,22 +46,23 @@
      (Eu compreendo)
      (Fico feliz com essa sua positividade))
     (((?* ?x) eu sinto (?* ?y))
-     (Com que frequencia voce sente ?y ?)
+     (Com que frequencia voce sente ?y ?))
     (((?* ?x) porque (?* ?y))
      (Esse e o real motivo?)
      (Tem certeza que e isso?))
-     (((?* ?x) nao gosto (?* ?y))
+    (((?* ?x) nao gosto (?* ?y))
      (Porque sera que voce nao gosta?)
-      (O que faz voce nao gostar?))
-     (((?* ?x) Eu sou (?* ?y))
+     (O que faz voce nao gostar?))
+    (((?* ?x) Eu sou (?* ?y))
      (Serio que voce e ?y ?)
-      (Conte-me mais sobre ser ?y ))
+     (Conte-me mais sobre ser ?y ))
     (((?* ?x) Por que (?* ?y))
      (Esse e o verdadeiro motivo?)
      (Quais outros motivos poderiam existir?)
      (Esse motivo pode explicar alguma outra coisa?))))
 
 
-(defun switch-viewpoint (words)
+
+(defun switch-viewpoint-pt (words)
   (sublis '((eu . voce) (voce . eu))
           words))

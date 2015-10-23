@@ -1,0 +1,53 @@
+#+Title: Aula 30
+#+Date: <2015-10-23 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Discutimos as contribuições de alunos pendentes. Passamos boa parte da
+aula discutindo o problema de comparação de símbolos de diferentes
+pacotes. Depois da aula, acabei por resolver o problema criando uma
+função de comparação especial para lidar com a comparação de símbolos
+por nome apenas quando ambos os argumentos são símbolos. Com isso,
+evitei mudar o resto das funções do livro.
+
+Vejam commit de hoje e a função:
+
+#+BEGIN_SRC lisp
+(defun eql-by-name-if-symbol (a b)
+  (if (and (symbolp a) (symbolp b))
+      (equal (symbol-name a)
+	     (symbol-name b))
+      (eql a b)))
+
+(defun starts-with (list x)
+  (and (consp list)
+       (eql-by-name-if-symbol (first list) x)))
+#+END_SRC
+
+A vantagem desta abordagem é que a modificação é bem local ao
+comportamento do ELIZA:
+
+#+BEGIN_EXAMPLE
+CL-USER> (eliza::segment-pattern-p '((?* ?x) hello))
+  0: (UTILS:STARTS-WITH (?* ?X) ELIZA:?*)
+    1: (UTILS::EQL-BY-NAME-IF-SYMBOL ?* ELIZA:?*)
+    1: UTILS::EQL-BY-NAME-IF-SYMBOL returned T
+  0: UTILS:STARTS-WITH returned T
+T
+CL-USER> (eliza::segment-pattern-p '(?x hello))
+  0: (UTILS:STARTS-WITH ?X ELIZA:?*)
+  0: UTILS:STARTS-WITH returned NIL
+NIL
+CL-USER> (eliza::segment-pattern-p '(12 hello))
+  0: (UTILS:STARTS-WITH 12 ELIZA:?*)
+  0: UTILS:STARTS-WITH returned NIL
+NIL
+CL-USER> (eliza::segment-pattern-p 'hello)
+NIL
+#+END_EXAMPLE
+
+* Tarefas
+
+- Ler os próximos capítulos e contribuir com os códigos antes de
+  segunda.

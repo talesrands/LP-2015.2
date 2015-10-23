@@ -5,7 +5,7 @@
 (in-package :eliza)
 
 (defconstant +fail+ nil)
-(defconstant +no-bindings+ '((T . T)))
+(defparameter +no-bindings+ '((T . T)))
 
 (defun make-binding (var val)
   (cons var val))
