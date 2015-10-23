@@ -27,7 +27,7 @@ Terminamos a aula rodando alguns exemplos de interação com Eliza.
 - Nossa constante =+no-bindings+= parece estar causando algum tipo de
   problema quando carregamos o pacote no SBCL. A explicação sobre este
   erro pode ser encontrada na seção [[http://www.sbcl.org/manual/#Defining-Constants][Defining Constants]] do manual de
-  SBC. Proponho que os alunos leiam e entendam a explicação desta
+  SBCL. Proponho que os alunos leiam e entendam a explicação desta
   seção. Na próxima aula irei chamar um aluno para explicar o que
   entendeu.
 
