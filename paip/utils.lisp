@@ -138,3 +138,11 @@
     (fresh-line *debug-io*)
     (dotimes (i indent) (princ "  " *debug-io*))
     (apply #'format *debug-io* format-string args)))
+
+
+(defun string2list (str &optional (start 0) (alist nil))
+   (let ((pos (nth-value 1 (read-from-string str t nil :start start)))
+         (strn (read-from-string str t nil :start start)))
+   (if (< pos (length str))
+       (string2list str pos (append alist (list strn)))
+       (append alist (list strn)))))
