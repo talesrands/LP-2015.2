@@ -14,7 +14,8 @@
    #:debug-off
    #:dbg-indent
    #:starts-with
-   #:flatten))
+   #:flatten
+   #:string2list))
 
 (defpackage :chapter-1
   (:use :utils :cl)
