@@ -157,7 +157,7 @@
   "Respond to user input using pattern matching rules."
   (loop
     (print 'eliza-prompt>)
-    (write (flatten (use-eliza-rules (read) :rules rules :preproc preproc)) :pretty t)))
+    (write (flatten (use-eliza-rules (string2list (read-line)) :rules rules :preproc preproc)) :pretty t)))
 
 
 
