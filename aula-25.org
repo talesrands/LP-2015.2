@@ -1,4 +1,4 @@
-#+Title: Aula 24
+#+Title: Aula 25
 #+Date: <2015-10-14 Wed>
 #+Author: Alexandre Rademaker
 

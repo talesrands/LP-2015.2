@@ -1,0 +1,16 @@
+#+Title: Aula 31
+#+Date: <2015-10-26 Mon>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Discutimos os exercícios do cap. Eliza que deixei como exercício e
+falamos brevemente das seções 6.1 e 6.2 que generalizam os poblemas do
+GPS e ELIZA. Deixei como exercício os alunos desenvolverem estas
+seções e submeterem pull request.
+
+* Tarefas
+
+- Exercícios cap. Eliza :: 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.12, 5.13, 5.15 
+- Ler e submeter códigos 6.1 e 6.2 para o repositório (pull request)
+- Ler [[http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html][Beyond Exception Handling: Conditions and Restarts]]
