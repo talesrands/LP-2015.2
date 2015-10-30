@@ -138,3 +138,11 @@
     (fresh-line *debug-io*)
     (dotimes (i indent) (princ "  " *debug-io*))
     (apply #'format *debug-io* format-string args)))
+
+
+(defun string->list (str &optional (start 0) (alist nil))
+  (multiple-value-bind (strn pos)
+      (read-from-string str nil nil :start start)
+    (if (and strn (<= pos (length str)))
+	(string->list str pos (cons strn alist))
+	(reverse alist))))

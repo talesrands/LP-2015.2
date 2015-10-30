@@ -159,7 +159,7 @@
     (loop
      (print 'eliza-prompt>)
      (let* ((answer 
-	     (flatten (use-eliza-rules (read) :rules rules 
+	     (flatten (use-eliza-rules (string->list (read-line)) :rules rules 
 				       :preproc preproc))))
        (format t "~{~A ~}" answer)
        (if (member 'exit answer :test #'utils:eql-by-name-if-symbol)
