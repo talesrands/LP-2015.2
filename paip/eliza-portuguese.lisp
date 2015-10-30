@@ -39,9 +39,6 @@
     (((?* ?x) gosto (?* ?y))
      (Por que você gosta tanto de ?y ?)
      (Sera que você gosta tanto de ?y quanto você pensa?))
-    (((?* ?x) Tchau (?* ?y))
-     (Não se va!)
-     (Logo agora que estamos no auge da nossa conversa?))
     (((?* ?x) sim (?* ?y))
      (Eu compreendo)
      (Fico feliz com essa sua positividade))
@@ -59,9 +56,10 @@
     (((?* ?x) Por que (?* ?y))
      (Esse é o verdadeiro motivo?)
      (Quais outros motivos poderiam existir?)
-     (Esse motivo pode explicar alguma outra coisa?))))
-
-
+     (Esse motivo pode explicar alguma outra coisa?))
+    (((?* ?x) Tchau (?* ?y))
+     (Adeus EXIT))))
+     
 (defun switch-viewpoint-pt (words)
   (sublis '((eu . você) (você . eu))
           words))
