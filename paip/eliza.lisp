@@ -155,24 +155,12 @@
 
 (defun eliza (rules preproc)
   "Respond to user input using pattern matching rules."
-  (loop
-    (print 'eliza-prompt>)
-    (let* ((answer 
-	    (flatten (use-eliza-rules (read) :rules rules 
-				      :preproc preproc))))
-      (format t "~{~A ~}" answer)
-  (if (every #'utils::eql-by-name-if-symbol answer '(good bye))
-      (Return)))))
-	
-;;(defun eliza (rules preproc)
-;;  "Respond to user input using pattern matching rules."
-;;  (loop
-;;   (print 'eliza-prompt>)
-;;    (let* ((answer 
-;;	    (flatten (use-eliza-rules (read) :rules rules 
-;;				      :preproc preproc))))
-;;      (format t "~{~A ~}" answer)
-;;  (if (utils::eql-by-name-if-symbol (car (reverse answer)) 'EXIT)
-;;      (Return)))))
-
-
+  (block out
+    (loop
+     (print 'eliza-prompt>)
+     (let* ((answer 
+	     (flatten (use-eliza-rules (read) :rules rules 
+				       :preproc preproc))))
+       (format t "~{~A ~}" answer)
+       (if (member 'exit answer :test #'utils:eql-by-name-if-symbol)
+	   (return-from out))))))

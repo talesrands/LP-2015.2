@@ -58,8 +58,17 @@
      (Quais outros motivos poderiam existir?)
      (Esse motivo pode explicar alguma outra coisa?))
     (((?* ?x) Tchau (?* ?y))
-     (Adeus EXIT))))
-     
+     (Adeus. exit))
+    (((?* ?x))               
+     (Hmmm. Interessante. Fale mais sobre isto)
+     (Mesmo? Não tenho certeza se entendi o seu motivo)
+     (O que você pensa sobre isto?)
+     (Por favor me fale mais sobre isto. Parece bem interessante)
+     (Não me sinto confortável em falar mais sobre isto) 
+     (Tem certeza que você está falando?)
+     (Assim fico sem graça. Vamos mudar de assunto))))
+
+
 (defun switch-viewpoint-pt (words)
   (sublis '((eu . você) (você . eu))
           words))
