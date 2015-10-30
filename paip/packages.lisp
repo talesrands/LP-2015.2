@@ -15,6 +15,7 @@
    #:dbg-indent
    #:starts-with
    #:flatten
+   #:string->list
    #:eql-by-name-if-symbol))
 
 (defpackage :chapter-1
