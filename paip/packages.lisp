@@ -14,7 +14,8 @@
    #:debug-off
    #:dbg-indent
    #:starts-with
-   #:flatten))
+   #:flatten
+   #:eql-by-name-if-symbol))
 
 (defpackage :chapter-1
   (:use :utils :cl)

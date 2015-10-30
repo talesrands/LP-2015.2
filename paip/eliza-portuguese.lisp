@@ -58,7 +58,7 @@
      (Quais outros motivos poderiam existir?)
      (Esse motivo pode explicar alguma outra coisa?))
     (((?* ?x) Tchau (?* ?y))
-     (Adeus EXIT))))
+     (Adeus. exit))))
      
 (defun switch-viewpoint-pt (words)
   (sublis '((eu . você) (você . eu))
