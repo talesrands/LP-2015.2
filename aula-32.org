@@ -1,0 +1,13 @@
+#+Title: Aula 31
+#+Date: <2015-10-30 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Não tivemos aula na quarta-feira. Discutimos as seções 6.1 e 6.2. 
+
+* Tarefas
+
+Aguardo pull request com as implementações das seções 6.1 e 6.2.
+
+  

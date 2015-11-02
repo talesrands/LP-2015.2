@@ -40,6 +40,7 @@ Vide arquivos no repo das aulas.
   - Tutorial [[https://www6.software.ibm.com/developerworks/education/l-emacs/l-emacs-ltr.pdf][Living in Emacs]] 
 - controle de versão :: https://git-scm.com 
   - https://github.com
+  - http://m.xkcd.com/1597/ (diversão)
 
 * Sites interessantes 
 
