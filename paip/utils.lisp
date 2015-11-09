@@ -146,3 +146,59 @@
     (if (and strn (<= pos (length str)))
 	(string->list str pos (cons strn alist))
 	(reverse alist))))
+
+
+(defun interactive-interpreter (prompt transformer)
+  (loop 
+     (print prompt)
+     (print (funcall transformer (read-line)))))
+
+(defun interactive-interpreter (prompt transformer)
+  (loop
+    (handler-case
+	(progn
+	  (if (stringp prompt)
+	      (print prompt)
+	      (funcall prompt))
+	  (force-output)
+	  (print (funcall transformer (read-line))))
+      (error (condition)
+        (format t "~&;; Error ~a ignored, back to top level." condition)))))
+
+(defun interactive-interpreter (&key (read #'read) (eval #'eval)
+				  (print-prompt #'print) (prompt "> ")
+				  (print-eval #'print))
+  (loop
+     (handler-case
+	 (progn
+	   (if (stringp prompt)
+	       (funcall print-prompt prompt)
+	       (funcall prompt))
+	   (force-output)
+	   (funcall print-eval (funcall eval (funcall read))))
+       (error (condition)
+	 (format t "~&;; Error ~a ignored, back to top level." condition)))))
+
+(defun interactive-interpreter (&key (read #'read) (eval #'eval)
+				  (print-prompt #'print) (prompt "> ")
+				  (print-eval #'print) (exit #'equal)
+				  (exit-symbol 'exit))
+  (block out
+    (loop
+       (handler-case
+	   (progn
+	     (if (stringp prompt)
+		 (funcall print-prompt prompt)
+		 (funcall prompt))
+	     (force-output)
+	     (let* ((value 
+		     (funcall eval (funcall read))))
+	       (funcall print-eval value)
+	       (if (funcall exit exit-symbol value)
+		   (return-from out))))
+       (error (condition)
+	      (format t "~&;; Error ~a ignored, back to top level." condition))))))
+     
+(defun prompt-generator (&optional (num 0) (ctl-string "[~d] "))
+  "Return a function that prints prompts like [1], [2], etc."
+  #'(lambda () (format t ctl-string (incf num))))
