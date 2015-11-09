@@ -16,7 +16,8 @@
    #:starts-with
    #:flatten
    #:string->list
-   #:eql-by-name-if-symbol))
+   #:eql-by-name-if-symbol
+   #:interactive-interpreter))
 
 (defpackage :chapter-1
   (:use :utils :cl)

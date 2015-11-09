@@ -164,3 +164,18 @@
        (format t "~{~A ~}" answer)
        (if (member 'exit answer :test #'utils:eql-by-name-if-symbol)
 	   (return-from out))))))
+		   
+(defun eliza (rules preproc)
+  "Respond to user input using pattern matching rules."
+  (interactive-interpreter
+   :read #'read-line 
+   :eval #'(lambda(x) 
+	     (flatten (use-eliza-rules (string->list x) :rules rules 
+				       :preproc preproc)))
+   :print-prompt #'(lambda(x) 
+		     (format t "~A" x))
+   :print-eval #'(lambda(x) 
+		   (format t "~{~A ~}~%" x))
+   :exit #'(lambda(x y) 
+	     (member x y :test #'utils:eql-by-name-if-symbol))
+   :prompt "eliza> "))
