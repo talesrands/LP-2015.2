@@ -1,0 +1,16 @@
+#+Title: Aula 33
+#+Date: <2015-11-09 Mon>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos sobre as seções 6.1 e 6.2. A turma pode ajudar a copiar a
+implementação da seção 6.2 e evoluir nos exercícios relacionados,
+coordenando via issue.
+
+* Referências
+
+- [[http://malisper.me/2015/09/22/getting-places/][Getting Places]]
+- [[https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node108.html][The Property List]]
+- Livro "ANSI Common Lisp" do Paul Graham (cap. 8)
+

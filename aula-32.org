@@ -1,4 +1,4 @@
-#+Title: Aula 31
+#+Title: Aula 32
 #+Date: <2015-10-30 Fri>
 #+Author: Alexandre Rademaker
 
