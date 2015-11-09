@@ -147,6 +147,7 @@
 	(string->list str pos (cons strn alist))
 	(reverse alist))))
 
+
 (defun interactive-interpreter (prompt transformer)
   (loop 
      (print prompt)
@@ -182,7 +183,7 @@
 				  (print-prompt #'print) (prompt "> ")
 				  (print-eval #'print) (exit #'equal)
 				  (exit-symbol 'exit))
-  (block out 			  
+  (block out
     (loop
        (handler-case
 	   (progn

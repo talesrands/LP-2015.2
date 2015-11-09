@@ -172,10 +172,8 @@
    :eval #'(lambda(x) 
 	     (flatten (use-eliza-rules (string->list x) :rules rules 
 				       :preproc preproc)))
-   :print-prompt #'(lambda(x) 
-		     (format t "~A" x))
-   :print-eval #'(lambda(x) 
-		   (format t "~{~A ~}~%" x))
+   :print-prompt #'(lambda(x) (format t "~A" x))
+   :print-eval #'(lambda(x) (format t "~{~A ~}~%" x))
    :exit #'(lambda(x y) 
 	     (member x y :test #'utils:eql-by-name-if-symbol))
-   :prompt "eliza> "))
+   :prompt (prompt-generator 0 "eliza [~d] > ")))

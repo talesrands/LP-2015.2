@@ -17,7 +17,8 @@
    #:flatten
    #:string->list
    #:eql-by-name-if-symbol
-   #:interactive-interpreter))
+   #:interactive-interpreter
+   #:prompt-generator))
 
 (defpackage :chapter-1
   (:use :utils :cl)
