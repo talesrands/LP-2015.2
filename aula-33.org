@@ -4,6 +4,8 @@
 
 * Tópicos
 
+Discutimos um pouco as implementações do Rafael da seção 6.1.
+
 Falamos sobre as seções 6.1 e 6.2. A turma pode ajudar a copiar a
 implementação da seção 6.2 e evoluir nos exercícios relacionados,
 coordenando via issue.
