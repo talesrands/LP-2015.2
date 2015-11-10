@@ -4,6 +4,8 @@
 
 (in-package :utils)
 
+(defconstant +fail+ nil)
+
 (setf (symbol-function 'find-all-if) #'remove-if-not)
 
 (defun one-of (set)

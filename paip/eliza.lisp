@@ -4,7 +4,6 @@
 
 (in-package :eliza)
 
-(defconstant +fail+ nil)
 (defparameter +no-bindings+ '((T . T)))
 
 (defun segment-match (pattern input bindings &optional (start 0))

@@ -18,7 +18,8 @@
    #:string->list
    #:eql-by-name-if-symbol
    #:interactive-interpreter
-   #:prompt-generator))
+   #:prompt-generator
+   #:+fail+))
 
 (defpackage :chapter-1
   (:use :utils :cl)
@@ -65,3 +66,6 @@
 
 (defpackage :eliza-test
   (:use :cl :utils :eliza))
+
+(defpackage :search
+  (:use :cl :utils))

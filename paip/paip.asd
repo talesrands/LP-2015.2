@@ -17,5 +17,6 @@
 	       (:file "pattern"          :depends-on ("utils"))
 	       (:file "eliza"            :depends-on ("pattern"))
 	       (:file "eliza-english"    :depends-on ("eliza"))
-	       (:file "eliza-portuguese" :depends-on ("eliza"))))
+	       (:file "eliza-portuguese" :depends-on ("eliza"))
+	       (:file "search" :depends-on ("utils"))))
 
