@@ -43,6 +43,11 @@
                           (random-elt (rule-responses rule))))))
         rules))
 
+;(defun use-eliza-rules (input &key (rules *rules*) (preproc #'identity))
+;  (rule-based-translator input *rules*
+;			 :action #'(lambda (bindings responses)
+;				     (sublis (switch-viewpoint bindings)
+;					     (random-elt responses)))))
 
 (defun eliza (rules preproc)
   "Respond to user input using pattern matching rules."
