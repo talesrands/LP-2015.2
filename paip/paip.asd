@@ -14,8 +14,8 @@
 	       (:file "gps-2"            :depends-on ("utils"))
 	       (:file "gps-maze"         :depends-on ("gps-2"))
 	       (:file "gps-school"       :depends-on ("gps-2"))
-	       (:file "eliza"            :depends-on ("utils"))
 	       (:file "pattern"          :depends-on ("utils"))
+	       (:file "eliza"            :depends-on ("pattern"))
 	       (:file "eliza-english"    :depends-on ("eliza"))
 	       (:file "eliza-portuguese" :depends-on ("eliza"))))
 

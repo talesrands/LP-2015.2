@@ -1,7 +1,6 @@
 ;;; Code from Paradigms of Artificial Intelligence Programming
 ;;; Copyright (c) 1991 Peter Norvig
 
-
 (in-package :pattern)
 
 (defconstant +fail+ nil)
@@ -76,63 +75,70 @@
 (defun single-match-fn (x)
   (when (symbolp x) (get x 'single-match)))
   
+
 (defun match-is (var-and-pred input bindings)
   (let* ((var (first var-and-pred))
          (pred (second var-and-pred))
          (new-bindings (pat-match var input bindings)))
     (if (or (eq new-bindings fail)
-            (not (funcal 1 pred input 1)
-        +fail+
-        new-bindings)))))
+            (not (funcal 1 pred input 1)))
+	+fail+
+	new-bindings)))
         
 (defun match-and (patterns input bindings)
-  (cond ((eq bindings fail) fail)
-        ((null patterns) bindings)
-        (t (match-and (rest patterns) input
-                      (pat-match (first patterns) input
-                                 bindings)))))
+  (cond
+    ((eq bindings fail) fail)
+    ((null patterns) bindings)
+    (t (match-and (rest patterns) input
+		  (pat-match (first patterns) input
+			     bindings)))))
                                  
 (defun match-or (patterns input bindings)
   (if (null patterns)
       +fail+
       (let ((new-bindings (pat-match (first patterns)
-                                      input bindings)))
+				     input bindings)))
         (if (eq new-bindings fail)
             (match-or (rest patterns) input bindings)
             new-bindings))))
             
 (defun match-not (patterns input bindings)
   (if (match-or patterns input bindings)
-       +fail+
-       bindings 1))
+      +fail+
+      bindings))
        
 (defun first-match-pos (patl input start)
-  (cond ((and (atom patl (not (variable-patl))))
-         (position patl input:start start :test #'equal))
-  ((< start (length input)) start )
-  (t nil)))
-  
+  (cond
+    ((and (atom patl (not (variable-patl))))
+     (position patl input :start start :test #'equal))
+    ((< start (length input)) start )
+    (t nil)))
+
 (defun segment-match+ (pattern input bindings)
-    (segment-match pattern input bindings 1 ))
+  (segment-match pattern input bindings 1 ))
 
 (defun segment-match? (pattern input bindings)
   (let* ((var (second (first pattern) 1))
-        (pat (rest pattern)))
+	 (pat (rest pattern)))
     (or (pat-match (cons var pat ) input bindings)
         (pat-match pat input bindings))))
 
 (defun match-if (pattern input bindings)
-  (and (progv (mapcar #'car bindings)
-              (mapcar # ' cdr bindings)
-          (eval (second (first pattern) 1)))
-        (pat-match (rest pattern) input bindings)))
+  (and
+   (progv
+       (mapcar #'car bindings)
+       (mapcar #'cdr bindings)
+     (eval (second (first pattern) 1)))
+   (pat-match (rest pattern) input bindings)))
+
 
 (defun pat-match-abbrev (symbol expansion)
   (setf (get symbol 'expand-pat-match-abbrev)
     (expand-pat-match-abbrev expansion)))
 
 (defun expand-pat-match-abbrev (pat)
-  (cond ((and (symbolp pat) (get pat 'expand-pat-match-abbrev)))
-        ((atom pat) pat)
-        (t (cons (expand-pat-match-abbrev (first pat))
-                 (expand-pat-match-abbrev (rest pat))))))
+  (cond
+    ((and (symbolp pat) (get pat 'expand-pat-match-abbrev)))
+    ((atom pat) pat)
+    (t (cons (expand-pat-match-abbrev (first pat))
+	     (expand-pat-match-abbrev (rest pat))))))
