@@ -44,8 +44,22 @@
 (defpackage :gps-test
   (:use :utils :cl :gps-2))
 
-(defpackage :eliza
+(defpackage :pattern
   (:use :cl :utils)
+  (:export
+   #:variable-p
+   #:make-binding
+   #:binding-var
+   #:binding-val
+   #:get-binding
+   #:lookup
+   #:extend-bindings
+   #:match-variable
+   #:pat-match
+   #:segment-pattern-p))
+
+(defpackage :eliza
+  (:use :cl :utils :pattern)
   (:export
    #:eliza))
 
