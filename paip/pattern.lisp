@@ -6,7 +6,13 @@
 (defconstant +fail+ nil)
 (defparameter +no-bindings+ '((T . T)))
 
+(setf (get '?is 'single-match) 'match-is)
+(setf (get '?or 'single-match) 'match-or)
+(setf (get '?and 'single-match) 'match-and)
+(setf (get '?not 'single-match) 'match-not)
 (setf (get '?* 'segment-match) 'segment-match)
+(setf (get '?? 'segment-match) 'segment-match?)
+(setf (get '?if 'segment-match) 'match-if)
 
 (defun variable-p (x)
   "Is x a variable (a symbol beginning with `?')?"
