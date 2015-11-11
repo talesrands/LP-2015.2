@@ -4,9 +4,8 @@
 
 (in-package :eliza)
 
-(defconstant +fail+ nil)
 (defparameter +no-bindings+ '((T . T)))
-
+(defparameter +fail+ nil)
 
 (defun rule-pattern (rule) (first rule))
 (defun rule-responses (rule) (rest rule))

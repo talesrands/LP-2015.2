@@ -66,3 +66,6 @@
 
 (defpackage :eliza-test
   (:use :cl :utils :eliza))
+
+(defpackage :search
+  (:use :cl :utils))
