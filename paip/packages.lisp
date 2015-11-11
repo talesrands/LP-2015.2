@@ -18,7 +18,8 @@
    #:string->list
    #:eql-by-name-if-symbol
    #:interactive-interpreter
-   #:prompt-generator))
+   #:prompt-generator
+   #:rule-based-translator))
 
 (defpackage :chapter-1
   (:use :utils :cl)
