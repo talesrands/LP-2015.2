@@ -22,7 +22,6 @@
                           (random-elt (rule-responses rule))))))
         rules))
 
-
 (defun eliza (rules preproc)
   "Respond to user input using pattern matching rules."
   (block out

@@ -6,6 +6,8 @@
 (defconstant +fail+ nil)
 (defparameter +no-bindings+ '((T . T)))
 
+(setf (get '?* 'segment-match) 'segment-match)
+
 (defun variable-p (x)
   "Is x a variable (a symbol beginning with `?')?"
   (and (symbolp x) (equal (elt (symbol-name x) 0) #\?)))
@@ -93,7 +95,8 @@
   (when (symbolp x) (get x 'segment-match)))
 
 (defun single-match-fn (x)
-  (when (symbolp x) (get x 'single-match)))
+  (when (symbolp x)
+    (get x 'single-match)))
   
 
 (defun match-is (var-and-pred input bindings)
