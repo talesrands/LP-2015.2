@@ -6,16 +6,17 @@
 (defconstant +fail+ nil)
 (defparameter +no-bindings+ '((T . T)))
 
-(setf (get '?is 'single-match) 'match-is)
-(setf (get '?or 'single-match) 'match-or)
+(setf (get '?is  'single-match) 'match-is)
+(setf (get '?or  'single-match) 'match-or)
 (setf (get '?and 'single-match) 'match-and)
 (setf (get '?not 'single-match) 'match-not)
-(setf (get '?* 'segment-match) 'segment-match)
-(setf (get '?? 'segment-match) 'segment-match?)
+
+(setf (get '?*  'segment-match) 'segment-match)
+(setf (get '?+  'segment-match) 'segment-match+)
+(setf (get '??  'segment-match) 'segment-match?)
 (setf (get '?if 'segment-match) 'match-if)
 
 (defun variable-p (x)
-  "Is x a variable (a symbol beginning with `?')?"
   (and (symbolp x) (equal (elt (symbol-name x) 0) #\?)))
   
 (defun make-binding (var val)
@@ -89,6 +90,7 @@
   (and (consp pattern)
        (single-match-fn (first pattern))))
        
+
 (defun segment-matcher (pattern input bindings)
   (funcall (segment-match-fn (first (first pattern)))
            pattern input bindings))
@@ -98,7 +100,8 @@
            (rest pattern) input bindings))
            
 (defun segment-match-fn (x)
-  (when (symbolp x) (get x 'segment-match)))
+  (when (symbolp x)
+    (get x 'segment-match)))
 
 (defun single-match-fn (x)
   (when (symbolp x)
