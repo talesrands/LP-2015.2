@@ -51,6 +51,26 @@
                     (pat-match (first pattern) (first input) 
                                bindings)))
         (t +fail+)))
+
+(defun segment-match (pattern input bindings &optional (start 0))
+  "Match the segment pattern ((?* var) . pat) against input."
+  (let ((var (second (first pattern)))
+        (pat (rest pattern)))
+    (if (null pat)
+        (match-variable var input bindings)
+        ;; We assume that pat starts with a constant
+        ;; In other words, a pattern can't have 2 consecutive vars
+        (let ((pos (position (first pat) input
+                             :start start :test #'equal)))
+          (if (null pos)
+              +fail+
+              (let ((b2 (pat-match pat (subseq input pos)
+				   (match-variable var (subseq input 0 pos)
+						   bindings))))
+                ;; If this match failed, try another longer one
+                (if (eq b2 +fail+)
+                    (segment-match pattern input bindings (+ pos 1))
+                    b2)))))))
         
 (defun segment-pattern-p (pattern)
   (and (consp pattern) (consp (first pattern))
