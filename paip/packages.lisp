@@ -57,6 +57,7 @@
    #:extend-bindings
    #:match-variable
    #:pat-match
+   #:pat-match-abbrev
    #:segment-pattern-p))
 
 (defpackage :eliza
@@ -65,7 +66,7 @@
    #:eliza))
 
 (defpackage :eliza-test
-  (:use :cl :utils :eliza))
+  (:use :cl :utils :eliza :pattern))
 
 (defpackage :search
   (:use :cl :utils))
