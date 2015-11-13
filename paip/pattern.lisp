@@ -53,8 +53,10 @@
         ((variable-p pattern)
          (match-variable pattern input bindings))
         ((eql pattern input) bindings)
-        ((segment-pattern-p pattern)                ; ***
-         (segment-match pattern input bindings))    ; ***
+        ((segment-pattern-p pattern)                
+         (segment-matcher pattern input bindings))
+	((single-pattern-p pattern)
+	 (single-matcher pattern input bindings))
         ((and (consp pattern) (consp input)) 
          (pat-match (rest pattern) (rest input)
                     (pat-match (first pattern) (first input) 
@@ -112,14 +114,14 @@
   (let* ((var (first var-and-pred))
          (pred (second var-and-pred))
          (new-bindings (pat-match var input bindings)))
-    (if (or (eq new-bindings fail)
-            (not (funcal 1 pred input 1)))
+    (if (or (eq new-bindings +fail+)
+            (not (funcall pred input )))
 	+fail+
 	new-bindings)))
         
 (defun match-and (patterns input bindings)
   (cond
-    ((eq bindings fail) fail)
+    ((eq bindings +fail+) +fail+)
     ((null patterns) bindings)
     (t (match-and (rest patterns) input
 		  (pat-match (first patterns) input
@@ -130,7 +132,7 @@
       +fail+
       (let ((new-bindings (pat-match (first patterns)
 				     input bindings)))
-        (if (eq new-bindings fail)
+        (if (eq new-bindings +fail+)
             (match-or (rest patterns) input bindings)
             new-bindings))))
             
@@ -141,16 +143,16 @@
        
 (defun first-match-pos (patl input start)
   (cond
-    ((and (atom patl (not (variable-patl))))
+    ((and (atom patl) (not (variable-p patl)))
      (position patl input :start start :test #'equal))
-    ((< start (length input)) start )
+    ((< start (length input)) start)
     (t nil)))
 
 (defun segment-match+ (pattern input bindings)
-  (segment-match pattern input bindings 1 ))
+  (segment-match pattern input bindings))
 
 (defun segment-match? (pattern input bindings)
-  (let* ((var (second (first pattern) 1))
+  (let* ((var (second (first pattern)))
 	 (pat (rest pattern)))
     (or (pat-match (cons var pat ) input bindings)
         (pat-match pat input bindings))))
@@ -160,7 +162,7 @@
    (progv
        (mapcar #'car bindings)
        (mapcar #'cdr bindings)
-     (eval (second (first pattern) 1)))
+     (eval (second (first pattern))))
    (pat-match (rest pattern) input bindings)))
 
 
