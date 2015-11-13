@@ -90,3 +90,6 @@
 
 (defpackage :test-search
   (:use :utils :cl :search :testcases))
+  
+(defpackage :test-pattern
+  (:use :utils :cl :pattern :testcases))
