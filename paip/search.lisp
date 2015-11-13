@@ -8,13 +8,13 @@
 (defun tree-search (states goal-p successors combiner)
   (block out 
     (loop 
-     (cond ((null states) (return-from out +fail+))
-	   ((funcall goal-p (first states))
-	    (return-from out (first states)))
-	   (t (setf states
-		    (funcall combiner
-			     (funcall successors (first states))
-			     (rest states))))))))
+       (cond ((null states) (return-from out +fail+))
+	     ((funcall goal-p (first states))
+	      (return-from out (first states)))
+	     (t (setf states
+		      (funcall combiner
+			       (funcall successors (first states))
+			       (rest states))))))))
 
 (defun tree-search (states goal-p successors combiner)
   "Find a state that satisfies goal-p.  Start with states,

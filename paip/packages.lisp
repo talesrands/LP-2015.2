@@ -77,9 +77,11 @@
    #:is
    #:prepend
    #:breadth-first-search
-   #:finite-binary-tree))
+   #:finite-binary-tree
+   #:diff
+   #:best-first-search))
 
-(defpackage :testcases
+(defpackage :testcases-framework
   (:use :utils :cl :search :eliza :eliza-test)
   (:export
    #:deftest
@@ -89,7 +91,7 @@
    #:report-result))
 
 (defpackage :test-search
-  (:use :utils :cl :search :testcases))
+  (:use :utils :cl :search :testcases-framework))
   
 (defpackage :test-pattern
-  (:use :utils :cl :pattern :testcases))
+  (:use :utils :cl :pattern :testcases-framework))

@@ -6,7 +6,7 @@
 
 (asdf:defsystem #:paip
   :serial t
-  :components ((:file "packages") 
+  :components ((:file "packages")
 	       (:file "utils"            :depends-on ("packages"))
 	       (:file "sentence-1"       :depends-on ("utils"))
 	       (:file "sentence-2"       :depends-on ("utils"))
@@ -19,7 +19,8 @@
 	       (:file "eliza-english"    :depends-on ("eliza"))
 	       (:file "eliza-portuguese" :depends-on ("eliza"))
 	       (:file "search"           :depends-on ("utils"))
-	       (:file "testcases"        :depends-on ("utils"))
-	       (:file "test-search"      :depends-on ("testcases"))))
+	       (:file "testcases-framework" :depends-on ("utils"))
+	       (:file "test-search"      :depends-on ("search"))
+	       (:file "test-pattern"     :depends-on ("pattern"))))
 
 
