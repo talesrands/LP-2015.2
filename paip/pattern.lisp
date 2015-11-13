@@ -63,6 +63,23 @@
                                bindings)))
         (t +fail+)))
 
+(defun pat-match (pattern input &optional (bindings nil))
+  (cond
+    ((variable-p pattern)
+     (match-variable pattern input bindings))
+    ((eql pattern input)
+     (values t bindings))
+    ((segment-pattern-p pattern)                
+     (segment-matcher pattern input bindings))
+    ((single-pattern-p pattern)
+     (single-matcher pattern input bindings))
+    ((and (consp pattern) (consp input))
+     (multiple-value-bind (res new-bindding)
+	 (pat-match (first pattern) (first input) bindings)
+       (if res
+	   (pat-match (rest pattern) (rest input) new-bindding))))
+    (t (values +fail+ nil))))
+
 (defun segment-match (pattern input bindings &optional (start 0))
   "Match the segment pattern ((?* var) . pat) against input."
   (let ((var (second (first pattern)))
