@@ -1,0 +1,13 @@
+#+Title: Aula 35
+#+Date: <2015-11-13 Fri>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos dos issues abertos.
+
+* Trabalhos
+
+- Estudar https://github.com/integrations/feature/build para automação
+  de testes.
+
