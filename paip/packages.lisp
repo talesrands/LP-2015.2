@@ -69,4 +69,29 @@
   (:use :cl :utils :eliza :pattern))
 
 (defpackage :search
-  (:use :cl :utils))
+  (:use :cl :utils)
+  (:export
+   #:tree-search
+   #:depth-first-search
+   #:binary-tree
+   #:is
+   #:prepend
+   #:breadth-first-search
+   #:finite-binary-tree
+   #:diff
+   #:best-first-search))
+
+(defpackage :testcases-framework
+  (:use :utils :cl :search :eliza :eliza-test)
+  (:export
+   #:deftest
+   #:combine-results
+   #:with-gensyms
+   #:check
+   #:report-result))
+
+(defpackage :test-search
+  (:use :utils :cl :search :testcases-framework))
+  
+(defpackage :test-pattern
+  (:use :utils :cl :pattern :testcases-framework))
