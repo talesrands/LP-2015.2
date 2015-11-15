@@ -35,20 +35,15 @@
   (binding-val (get-binding var bindings)))
 
 (defun extend-bindings (var val bindings)
-  (cons (cons var val)
-        ;; Once we add a "real" binding, we can get rid of the dummy
-        ;; no-bindings
-        (if (eq bindings +no-bindings+)
-            nil
-            bindings)))
+  (values t (cons (cons var val) bindings)))
 
 (defun match-variable (var input bindings)
   (let ((binding (get-binding var bindings)))
     (cond ((not binding) (extend-bindings var input bindings))
-          ((equal input (binding-val binding)) bindings)
-          (t +fail+))))
+          ((equal input (binding-val binding)) (values t bindings))
+          (t (values nil nil)))))
           
-(defun pat-match (pattern input &optional (bindings +no-bindings+))
+(defun pat-match (pattern input &optional (bindings +no-bindings+)
   (cond ((eq bindings +fail+) +fail+)
         ((variable-p pattern)
          (match-variable pattern input bindings))
@@ -70,15 +65,16 @@
     ((eql pattern input)
      (values t bindings))
     ((segment-pattern-p pattern)                
-     (segment-matcher pattern input bindings))
+     (values (segment-matcher pattern input bindings) bindings))
     ((single-pattern-p pattern)
-     (single-matcher pattern input bindings))
+     (values t (single-matcher pattern input bindings)))
     ((and (consp pattern) (consp input))
      (multiple-value-bind (res new-bindding)
 	 (pat-match (first pattern) (first input) bindings)
        (if res
-	   (pat-match (rest pattern) (rest input) new-bindding))))
-    (t (values +fail+ nil))))
+	   (pat-match (rest pattern) (rest input) new-bindding)
+	   (values nil nil))))
+    (t (values nil nil))))
 
 (defun segment-match (pattern input bindings &optional (start 0))
   "Match the segment pattern ((?* var) . pat) against input."
@@ -120,19 +116,19 @@
            
 (defun segment-match-fn (x)
   (when (symbolp x)
-    (get x 'segment-match)))
+    (get (find-symbol (symbol-name x) :pattern) 'segment-match)))
 
 (defun single-match-fn (x)
   (when (symbolp x)
-    (get x 'single-match)))
+    (get (find-symbol (symbol-name x) :pattern) 'single-match)))
   
 
 (defun match-is (var-and-pred input bindings)
   (let* ((var (first var-and-pred))
          (pred (second var-and-pred))
-         (new-bindings (pat-match var input bindings)))
-    (if (or (eq new-bindings +fail+)
-            (not (funcall pred input )))
+         (new-bindings (nth-value 1 (pat-match var input bindings))))
+    (if (or (eq new-bindings nil)
+            (not (funcall pred input)))
 	+fail+
 	new-bindings)))
         
