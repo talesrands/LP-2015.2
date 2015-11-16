@@ -66,18 +66,19 @@
 (defun pat-match (pattern input &optional (bindings nil))
   (cond
     ((variable-p pattern)
-     (match-variable pattern input bindings))
+     (values t (match-variable pattern input bindings)))
     ((eql pattern input)
      (values t bindings))
     ((segment-pattern-p pattern)                
-     (segment-matcher pattern input bindings))
+     (values (segment-matcher pattern input bindings) bindings))
     ((single-pattern-p pattern)
-     (single-matcher pattern input bindings))
+     (values t (single-matcher pattern input bindings)))
     ((and (consp pattern) (consp input))
      (multiple-value-bind (res new-bindding)
 	 (pat-match (first pattern) (first input) bindings)
        (if res
-	   (pat-match (rest pattern) (rest input) new-bindding))))
+	   (pat-match (rest pattern) (rest input) new-bindding)
+	   (values nil nil))))
     (t (values +fail+ nil))))
 
 (defun segment-match (pattern input bindings &optional (start 0))
@@ -120,19 +121,19 @@
            
 (defun segment-match-fn (x)
   (when (symbolp x)
-    (get x 'segment-match)))
+    (get (find-symbol (symbol-name x) :pattern) 'segment-match)))
 
 (defun single-match-fn (x)
   (when (symbolp x)
-    (get x 'single-match)))
+    (get (find-symbol (symbol-name x) :pattern) 'single-match)))
   
 
 (defun match-is (var-and-pred input bindings)
   (let* ((var (first var-and-pred))
          (pred (second var-and-pred))
-         (new-bindings (pat-match var input bindings)))
-    (if (or (eq new-bindings +fail+)
-            (not (funcall pred input )))
+         (new-bindings (nth-value 1 (pat-match var input bindings))))
+    (if (or (eq new-bindings nil)
+            (not (funcall pred input)))
 	+fail+
 	new-bindings)))
         
