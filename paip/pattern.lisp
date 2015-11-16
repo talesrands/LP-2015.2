@@ -35,18 +35,15 @@
   (binding-val (get-binding var bindings)))
 
 (defun extend-bindings (var val bindings)
-  (cons (cons var val)
-        ;; Once we add a "real" binding, we can get rid of the dummy
-        ;; no-bindings
-        (if (eq bindings +no-bindings+)
-            nil
-            bindings)))
+  (cons (cons var val) bindings))
 
 (defun match-variable (var input bindings)
   (let ((binding (get-binding var bindings)))
-    (cond ((not binding) (extend-bindings var input bindings))
-          ((equal input (binding-val binding)) bindings)
-          (t +fail+))))
+    (cond ((not binding)
+	   (values t (extend-bindings var input bindings)))
+	  ((equal input (binding-val binding))
+	   (values t bindings))
+          (t (values +fail+ nil)))))
           
 (defun pat-match (pattern input &optional (bindings +no-bindings+))
   (cond ((eq bindings +fail+) +fail+)

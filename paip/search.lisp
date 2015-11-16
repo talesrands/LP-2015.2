@@ -32,9 +32,11 @@
   "Search new states first until goal is reached."
   (tree-search (list start) goal-p successors #'append))
 
-(defun binary-tree (x) (list (* 2 x) (+ 1 (* 2 x))))
+(defun binary-tree (x)
+  (list (* 2 x) (+ 1 (* 2 x))))
 
-(defun is (value) #'(lambda (x) (eql x value)))
+(defun is (value)
+  #'(lambda (x) (eql x value)))
 
 (defun prepend (x y)
   "Prepend y to start of x"
