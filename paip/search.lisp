@@ -16,9 +16,8 @@
 			       (funcall successors (first states))
 			       (rest states))))))))
 
+
 (defun tree-search (states goal-p successors combiner)
-  "Find a state that satisfies goal-p.  Start with states,
-  and search according to successors and combiner."
   (dbg :search "~&;; Search: ~a" states)
   (cond ((null states) +fail+)
         ((funcall goal-p (first states)) (first states))
@@ -28,6 +27,7 @@
 		     (rest states))
 	    goal-p successors combiner))))
 
+
 (defun depth-first-search (start goal-p successors)
   "Search new states first until goal is reached."
   (tree-search (list start) goal-p successors #'append))
@@ -36,7 +36,9 @@
 
 (defun is (value) #'(lambda (x) (eql x value)))
 
-(defun prepend (x y) "Prepend y to start of x" (append y x))
+(defun prepend (x y)
+  "Prepend y to start of x"
+  (append y x))
 
 (defun breadth-first-search (start goal-p successors)
   "Search old states first until goal is reached."
@@ -79,7 +81,9 @@
                          sorted
                          (subseq sorted 0 beam-width))))))
 
-(defstruct (city (:type list)) name long lat)
+
+(defstruct (city (:type list))
+  name long lat)
 
 (defparameter *cities*
   '((Atlanta      84.23 33.45) (Los-Angeles   118.15 34.03)
