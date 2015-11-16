@@ -63,7 +63,7 @@
 (defun pat-match (pattern input &optional (bindings nil))
   (cond
     ((variable-p pattern)
-     (values t (match-variable pattern input bindings)))
+     (match-variable pattern input bindings))
     ((eql pattern input)
      (values t bindings))
     ((segment-pattern-p pattern)                
