@@ -1,0 +1,14 @@
+#+Title: Aula 34
+#+Date: <2015-11-11 Wed>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Discutimos os pull requests feitos desde segunda.
+
+* Trabalhos
+
+- novos issues criados.
+- o pattern não está funcionado como esperado.
+- pensar em como podemos organizar os testes.
+

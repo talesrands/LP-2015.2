@@ -1,0 +1,39 @@
+#+Title: Aula 36
+#+Date: <2015-11-16 Mon>
+#+Author: Alexandre Rademaker
+
+* Tópicos
+
+Falamos sobre seção 6.4, buscas. Também acabamos discutindo brevemente
+recursão de cauda e implementações alternativas de fibonacci como
+forma de desmistificar "recursão" como uma técnica ineficiente.
+
+#+BEGIN_SRC lisp
+(defun fib1 (n)
+  (cond 
+    ((= n 0) 0)
+    ((= n 1) 1)
+    (t (+ (fib1 (- n 1)) (fib1 (- n 2))))))
+
+
+(defun fib2 (n)
+  (labels ((calc-fib (n a b)
+	     (if (= n 0)
+		 a
+		 (calc-fib (- n 1) b (+ a b)))))
+    (calc-fib n 0 1)))
+
+
+(defun fib3 (n)
+  (do ((k n (- k 1))
+       (a 0 b)
+       (b 1 (+ a b)))
+      ((= k 0) a)))
+#+END_SRC
+
+* Trabalhos
+
+- Vários exercícios pendentes.
+- Novas seções.
+- Mandar emails com dúvidas antes das aulas.
+

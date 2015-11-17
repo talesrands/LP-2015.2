@@ -18,7 +18,8 @@
    #:string->list
    #:eql-by-name-if-symbol
    #:interactive-interpreter
-   #:prompt-generator))
+   #:prompt-generator
+   #:rule-based-translator))
 
 (defpackage :chapter-1
   (:use :utils :cl)
@@ -56,6 +57,7 @@
    #:extend-bindings
    #:match-variable
    #:pat-match
+   #:pat-match-abbrev
    #:segment-pattern-p))
 
 (defpackage :eliza
@@ -64,4 +66,32 @@
    #:eliza))
 
 (defpackage :eliza-test
-  (:use :cl :utils :eliza))
+  (:use :cl :utils :eliza :pattern))
+
+(defpackage :search
+  (:use :cl :utils)
+  (:export
+   #:tree-search
+   #:depth-first-search
+   #:binary-tree
+   #:is
+   #:prepend
+   #:breadth-first-search
+   #:finite-binary-tree
+   #:diff
+   #:best-first-search))
+
+(defpackage :testcases-framework
+  (:use :utils :cl :search :eliza :eliza-test)
+  (:export
+   #:deftest
+   #:combine-results
+   #:with-gensyms
+   #:check
+   #:report-result))
+
+(defpackage :test-search
+  (:use :utils :cl :search :testcases-framework))
+  
+(defpackage :test-pattern
+  (:use :utils :cl :pattern :testcases-framework))
