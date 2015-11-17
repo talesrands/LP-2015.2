@@ -84,6 +84,18 @@
                          (subseq sorted 0 beam-width))))))
 
 
+(defun search-n (start n goal-p successors cost-fn beam-width)
+  (let ((solutions nil))
+    (beam-search start #'(lambda (x)
+			   (cond ((not (funcall goal-p x)) nil)
+				 ((= n 0) x)
+				 (t (decf n)
+				    (push x solutions)
+				    nil)))
+		 successors cost-fn beam-width)
+    solutions))
+
+
 (defstruct (city (:type list))
   name long lat)
 
