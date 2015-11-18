@@ -58,7 +58,8 @@
    #:match-variable
    #:pat-match
    #:pat-match-abbrev
-   #:segment-pattern-p))
+   #:segment-pattern-p
+   #:expand-pat-match-abbrev))
 
 (defpackage :eliza
   (:use :cl :utils :pattern)
@@ -95,3 +96,6 @@
   
 (defpackage :test-pattern
   (:use :utils :cl :pattern :testcases-framework))
+
+(defpackage :student
+  (:use :utils :cl :pattern))
