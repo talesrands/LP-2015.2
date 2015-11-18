@@ -129,18 +129,18 @@
                #'(lambda (c) (air-distance c dest))
                1))
 
+
 (defstruct (path (:print-function print-path))
   state (previous nil) (cost-so-far 0) (total-cost 0))
 
 (defun trip (start dest &optional (beam-width 1))
   "Search for the best path from the start to dest."
-  (beam-search
-    (make-path :state start)
-    (is dest :key #'path-state)
-    (path-saver #'neighbors #'air-distance
-                #'(lambda (c) (air-distance c dest)))
-    #'path-total-cost
-    beam-width))
+  (beam-search (make-path :state start)
+	       (is dest :key #'path-state)
+	       (path-saver #'neighbors #'air-distance
+			   #'(lambda (c) (air-distance c dest)))
+	       #'path-total-cost
+	       beam-width))
 
 (defconstant earth-diameter 12765.0
   "Diameter of planet earth in kilometers.")
