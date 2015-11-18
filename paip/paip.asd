@@ -20,8 +20,8 @@
 	       (:file "eliza-portuguese"      :depends-on ("eliza"))
 	       (:file "search"                :depends-on ("utils"))
 	       (:file "testcases-framework"   :depends-on ("utils"))
-	       (:file "test-search"           :depends-on ("search"))
-	       (:file "test-pattern"          :depends-on ("pattern"))
+	       (:file "test-search"           :depends-on ("search" "testcases-framework"))
+	       (:file "test-pattern"          :depends-on ("pattern" "testcases-framework"))
 	       (:file "student"               :depends-on ("pattern"))))
 
 

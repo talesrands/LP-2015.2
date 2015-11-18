@@ -4,13 +4,13 @@
 
 (in-package :student)
 
-;; (requires "patmatch")
-
-(defstruct (rule (:type list)) pattern response)
+(defstruct (rule (:type list))
+  pattern response)
 
 (defstruct (exp (:type list)
 		(:constructor mkexp (lhs op rhs)))
   op lhs rhs)
+
 
 (defun exp-p (x) (consp x))
 (defun exp-args (x) (rest x))
