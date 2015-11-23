@@ -22,6 +22,9 @@
 	       (:file "testcases-framework"   :depends-on ("utils"))
 	       (:file "test-search"           :depends-on ("search" "testcases-framework"))
 	       (:file "test-pattern"          :depends-on ("pattern" "testcases-framework"))
+	       (:file "gps-blocks"            :depends-on ("gps-2"))
+	       (:file "gps-monkey"            :depends-on ("gps-2"))
+	       (:file "search-gps"            :depends-on ("gps-2" "search"))
 	       (:file "student"               :depends-on ("pattern"))))
 
 

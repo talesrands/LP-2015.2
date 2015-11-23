@@ -20,6 +20,13 @@
     (equal '(125 255 15)
 	   (search::search-n 1 3 (lambda (n) (equal 0 (mod n 5))) #'binary-tree (search::price-is-right 300) 5))))
 
+;;(deftest test-search-gps ()
+;;  (check
+;;    (equal (search-gps '((c on a) (a on table) (b on table) (space on c) (space on b) (space on table))
+;;		       '((b on c) (a on b))) '((GPS-2::EXECUTING (MOVE C FROM A TO TABLE))
+;;					       (GPS-2::EXECUTING (MOVE B FROM TABLE TO C))
+;;					       (GPS-2::EXECUTING (MOVE A FROM TABLE TO B))))))
+
 (deftest test-search ()
   (combine-results
     (test-depth-first-search)

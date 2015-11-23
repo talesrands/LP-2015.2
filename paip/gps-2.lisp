@@ -10,6 +10,9 @@
   "An operation"
   (action nil) (preconds nil) (add-list nil) (del-list nil))
 
+(defun action-p (x)
+  "Is x something that is (start) or (executing ...)?"
+  (or (equal x '(start)) (executing-p x)))
 
 (defun executing-p (x)
   "Is x of the form: (executing ...) ?"

@@ -40,10 +40,34 @@
    #:op-preconds
    #:op-action
    #:gps
-   #:use))
+   #:use
+   #:action-p
+   #:*ops*
+   #:member-equal))
+
+(defpackage :search
+  (:use :cl :utils)
+  (:export
+   #:tree-search
+   #:depth-first-search
+   #:binary-tree
+   #:is
+   #:prepend
+   #:breadth-first-search
+   #:finite-binary-tree
+   #:diff
+   #:best-first-search
+   #:beam-search))
+
+(defpackage :search-gps
+  (:use :utils :cl :gps-2 :search)
+  (:export
+   #:search-gps))
 
 (defpackage :gps-test
-  (:use :utils :cl :gps-2))
+  (:use :utils :cl :gps-2 :search-gps)
+  (:export
+   #:make-block-ops))
 
 (defpackage :pattern
   (:use :cl :utils)
@@ -69,19 +93,6 @@
 (defpackage :eliza-test
   (:use :cl :utils :eliza :pattern))
 
-(defpackage :search
-  (:use :cl :utils)
-  (:export
-   #:tree-search
-   #:depth-first-search
-   #:binary-tree
-   #:is
-   #:prepend
-   #:breadth-first-search
-   #:finite-binary-tree
-   #:diff
-   #:best-first-search))
-
 (defpackage :testcases-framework
   (:use :utils :cl :search :eliza :eliza-test)
   (:export
@@ -92,10 +103,11 @@
    #:report-result))
 
 (defpackage :test-search
-  (:use :utils :cl :search :testcases-framework))
+  (:use :utils :cl :search :testcases-framework :search-gps :gps-2 :gps-test))
   
 (defpackage :test-pattern
   (:use :utils :cl :pattern :testcases-framework))
 
 (defpackage :student
   (:use :utils :cl :pattern))
+
