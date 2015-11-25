@@ -1,3 +1,6 @@
+
+(defpackage :clos)
+
 (defstruct account 
   (name "") (balance 0.00) (interest-rate .06))
 

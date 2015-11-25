@@ -109,3 +109,6 @@
 
 (defpackage :student
   (:use :utils :cl :pattern))
+
+(defpackage :clos
+  (:use :cl :utils))
