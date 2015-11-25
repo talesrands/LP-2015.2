@@ -166,12 +166,22 @@
 	(t nil)))
 
 (defun one-unknown (exp)
-  "Returns the single unknown in exp, if there is exactly one."
-  (cond ((unknown-p exp) exp)
-	((atom exp) nil)
-	((no-unknown (exp-lhs exp)) (one-unknown (exp-rhs exp)))
-	((no-unknown (exp-rhs exp)) (one-unknown (exp-lhs exp)))
-	(t nil)))
+  (let ((answer (find-one-unknown exp nil)))
+    (if (eql answer 2)
+        nil
+        answer)))
+
+(defun find-one-unknown (exp unknown)
+  (cond ((eql unknown 2) 2)
+        ((exp-p exp)
+         (find-one-unknown
+           (exp-rhs exp)
+           (find-one-unknown (exp-lhs exp) unknown)))
+        ((unknown-p exp)
+         (if unknown
+             2
+             exp))
+         (t unknown)))
 
 (defun commutative-p (op)
   "Is operator commutative?"
