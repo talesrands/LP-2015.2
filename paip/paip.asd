@@ -24,4 +24,5 @@
 		 (:file "gps-search"        :depends-on ("search"))
 		 (:file "gps-blocks"        :depends-on ("gps-2"))
 		 (:file "gps-monkey"        :depends-on ("gps-2"))
-		 (:file "student"           :depends-on ("pattern"))))
+		 (:file "student"           :depends-on ("pattern"))
+		 (:file "clos"              :depends-on ("utils"))))
