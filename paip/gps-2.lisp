@@ -10,10 +10,6 @@
   "An operation"
   (action nil) (preconds nil) (add-list nil) (del-list nil))
 
-(defun action-p (x)
-  "Is x something that is (start) or (executing ...)?"
-  (or (equal x '(start)) (executing-p x)))
-
 (defun executing-p (x)
   "Is x of the form: (executing ...) ?"
   (starts-with x 'executing))
@@ -82,5 +78,4 @@
   "Use oplist as the default list of operators. Return something
    useful, but not too verbose: the number of operators."
   (length (setf *ops* oplist)))
-
 

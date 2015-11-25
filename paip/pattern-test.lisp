@@ -1,5 +1,5 @@
 
-(in-package test-pattern)
+(in-package :pattern-test)
 
 (deftest test-pat-match ()
  (check

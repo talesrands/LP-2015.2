@@ -1,9 +1,6 @@
 
 (in-package :gps-test)
 
-(defun symbol-pattern (x)
-  (find-symbol (symbol-name x) :pattern))
-
 (defun make-block-ops (blocks)
   (let ((ops nil))
     (dolist (a blocks)
@@ -28,5 +25,7 @@
       `((,a on ,c))
       `((,a on ,c) (space on ,b))))
 
+(defparameter start '((c on a) (a on table) (b on table) (space on c)
+		      (space on b) (space on table)))
+
 (use (make-block-ops '(a b c)))
-(setf start '((c on a) (a on table) (b on table) (space on c) (space on b) (space on table)))
