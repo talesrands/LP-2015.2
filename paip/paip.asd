@@ -25,4 +25,5 @@
 		 (:file "gps-blocks"        :depends-on ("gps-2"))
 		 (:file "gps-monkey"        :depends-on ("gps-2"))
 		 (:file "student"           :depends-on ("pattern"))
-		 (:file "clos"              :depends-on ("utils"))))
+		 (:file "clos"              :depends-on ("utils"))
+		 (:file "symbolicmath"      :depends-on ("pattern"))))
