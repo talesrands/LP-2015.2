@@ -112,3 +112,6 @@
 
 (defpackage :clos
   (:use :cl :utils))
+
+(defpackage :symbolicmath
+  (:use :cl :pattern))
