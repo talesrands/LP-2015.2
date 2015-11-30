@@ -1,4 +1,5 @@
-(in-package :symmath)
+(in-package :symbolicmath)
+
 (defun infix->prefix (infix-exp)
   "Convert fully parenthesized infix-exp to a prefix expression"
   ;; Don't use this version for non-fully parenthesized exps!
@@ -24,36 +25,15 @@
 	(t (error "Illegal exp"))))
 
 (defun variable-p (exp)
-  "Variables are the symbols M through Z."
-  ;; put x,y,z first to find them a little faster
   (member exp '((x y z m n o p q r s u v w) T)))
-;;Temos problemas em variable-p, por causa do valor de saída novo 
-;;do pat match. Botei o T porque permitiu que compilasse, mas 
-;;as funções ainda não funcionam
 
 (pat-match-abbrev 'x+ '(?+ x))
 (pat-match-abbrev 'y+ '(?+ y))
 
 (defun rule-pattern (rule) (first rule))
-
 (defun rule-response (rule) (second rule))
 
-(defparameter *infix->prefix-rules*
-  (mapcar #'expand-pat-match-abbrev
-	  '(((x+ = y+) (= x y))
-	    ((- x+)    (- x))
-	    ((+ x+)    (+ x))
-	    ((x+ + y+) (+ x y))
-	    ((x+ - y+) (- x y))
-	    ((d y+ / d x) (d y x))
-	    ((Int y+ d x) (int y x))
-	    ((x+ * y+) (* x y))
-	    ((x+ / y+) (/ x y))
-	    ((x+ ^ y+) (^ x y))))
-  "A list of rules, ordered by precedence.")
-
 (defstruct (rule (:type list)) pattern response)
-
 (defstruct (exp (:type list)
 		(:constructor mkexp (lhs op rhs)))
   op lhs rhs)
@@ -63,80 +43,41 @@
 (defun exp-args (x) (rest x))
 
 (defun prefix->infix (exp)
-  "Translate prefix to infix expressions."
   (if (atom exp) exp
-      (mapcar #'prefix->infix
-	      (if (binary-exp-p exp)
-		  (list (exp-lhs exp) (exp-op exp) (exp-rhs exp))
+    (mapcar #'prefix->infix
+	    (if (binary-exp-p exp)
+	          (list (exp-lhs exp) (exp-op exp) (exp-rhs exp))
 		  exp))))
 
 (defun binary-exp-p (x)
   (and (exp-p x) (= (length (exp-args x)) 2)))
 
-(defparameter *simplification-rules* (mapcar #'infix->prefix '(
-  (x + 0 = x)
-  (0 + x = x)
-  (x + x = 2*x)
-  (x - 0 = x)
-  (0 - x = - x)
-  (x - x = 0)
-  (- - x = x)
-  (x * 1 = x)
-  (1 * x = x)
-  (x * 0 = 0)
-  (0 * x = 0)
-  (x * x = x ^ 2)
-  (x / 0 = undefined)
-  (0 / x = 0)
-  (x / 1 = x)
-  (x / x = 1)
-  (0 ^ 0 = undefined)
-  (x ^ 0 = 1)
-  (0 ^ x = 0)
-  (1 ^ x = 1)
-  (x ^ 1 = x)
-  (x ^ -1 = 1 / x)
-  (x * (y / x) = y)
-  ((y / x) * x = y)
-  ((y * x) / x = y)
-  ((x * y) / x = y)
-  (x + - x = 0)
-  ((- x) + x = 0)
-  (x + y - x = y)
-  )))
-
 (defun ^ (x y) "Exponentiation" (expt x y))
 
 (defun simplifier ()
-  "Read a mathematical expression, simplify it, and print the result."
   (loop
-     (print 'simplifier>)
-     (print (simp (read)))))
+    (print 'simplifier>)
+    (print (simp (read)))))
 
 (defun simp (inf) (prefix->infix (simplify (infix->prefix inf))))
 
 (defun simplify (exp)
-  "Simplify an expression by first simplifying its components."
   (if (atom exp) exp
-      (simplify-exp (mapcar #'simplify exp))))
+    (simplify-exp (mapcar #'simplify exp))))
 
 (defun simplify-exp (exp)
-  "Simplify using a rule, or by doing arithmetic."
   (cond ((rule-based-translator exp *simplification-rules*
-	       :rule-if #'exp-lhs :rule-then #'exp-rhs
-	       :action #'(lambda (bindings response)
-			   (simplify (sublis bindings response)))))
+	    :rule-if #'exp-lhs :rule-then #'exp-rhs
+	    :action #'(lambda (bindings response)
+	    	         (simplify (sublis bindings response)))))
 	((evaluable exp) (eval exp))
 	(t exp)))
 
 (defun evaluable (exp)
-  "Is this an arithmetic expression that can be evaluated"
   (and (every #'numberp (exp-args exp))
        (or (member (exp-op exp) '(+ - * /))
 	   (and (eq (exp-op exp) '^)
 		(integerp (second (exp-args exp)))))))
-
-;; Define n and m as numbers; s as a non-number:
 
 (pat-match-abbrev 'n '(?is n numberp))
 (pat-match-abbrev 'm '(?is m numberp))
@@ -145,67 +86,15 @@
 (defun not-numberp (x) (not (numberp x)))
 
 (defun simp-rule (rule)
-  "Transform a rule into proper format."
   (let ((exp (infix->prefix rule)))
     (mkexp (expand-pat-match-abbrev (exp-lhs exp))
 	   (exp-op exp) (exp-rhs exp))))
-
-(setf *simplification-rules*
-      (append *simplification-rules* (mapcar #'simp-rule
-	'((s * n = n * s)
-	  (n * (m * x) = (n * m) * x)
-	  (x * (n * y) = n * (x * y))
-	  ((n * x) * y = n * (x * y))
-	  ( n + s = s + n)
-	  ((x + m) + n = x + n + m)
-	  (x + (y + n) = (x + y) + n)
-	  ((x + n) + y = (x + y) + n)))))
-
-(setf *simplification-rules*
-      (append *simplification-rules* (mapcar #'simp-rule 
-	'((log 1                     = 0)
-	  (log 0                     = undefined)
-	  (log e                     = 1)
-	  (sin 0                     = 0)
-	  (sin pi                    = 0)
-	  (cos 0                     = 1)
-	  (cos pi                    = -1)
-	  (sin (pi / 2)              = 1)
-	  (cos (pi / 2)              = 0)
-	  (log (e ^ x)               = x)
-	  (e ^ (log x)               = x)
-	  ((x ^ y) * (x ^ z)         = x ^ (y + z))
-	  ((x ^ y) / (x ^ z)         = x ^ (y - z))
-	  (log x + log y             = log (x * y))
-	  (log x - log y             = log (x / y))
-	  ((sin x) ^ 2 + (cos x) ^ 2 = 1)))))
-
-
-(setf *simplification-rules*
-      (append *simplification-rules* (mapcar #'simp-rule
-	'((d x / d x = 1)
-	  (d (u + v) / d x = (d u / d x) + (d v / d x))
-	  (d (u - v) / d x = (d u / d x) - (d v / d x))
-	  (d (- u) / d x = - (d u / d x))
-	  (d (u * v) / d x = u * (d v / d x) + v * (d u / d x))
-	  (d (u / v) / d x = (v * (d u / d x) - u * (d v / d x))
-	                     / v ^ 2)
-	  (d (u ^ n) / d x = n * u ^ (n - 1) * (d u / d x))
-	  (d (u ^ v) / d x = v * u ^ (v - 1) * (d u / d x)
-	                   + u ^ v * (log u) * (d v / d x))
-	  (d (log u) / d x = (d u/ dx) / u)
-	  (d (sin u) / d x = (cos u) * (d u / d x))
-	  (d (cos u) / d x = - (sin u) * (d u / d x))
-	  (d (e ^ u) / d x = (e ^ u) * (d u / d x))
-	  (d u / d x       = 0)))))
 
 (defun simp-fn (op) (get op 'simp-fn))
 
 (defun set-simp-fn (op fn) (setf (get op 'simp-fn) fn))
 
 (defun simplify-exp (exp)
-  "Simplify using a rule, or by doing arithmetic,
-  or by using the simp function supplied for this operator."
   (cond ((simplify-by-fn exp))
 	((rule-based-translator exp *simplification-rules*
 	   :rule-if #'exp-lhs :rule-then #'exp-rhs
@@ -215,9 +104,6 @@
 	(t exp)))
 
 (defun simplify-by-fn (exp)
-  "If there is a simplification fn for this exp,
-  and if applying it gives a non-null result,
-  then simplify the result and return that."
   (let* ((fn (simp-fn (exp-op exp)))
 	 (result (if fn (funcall fn exp))))
     (if (null result)
@@ -225,12 +111,10 @@
 	(simplify result))))
 
 (defun factorize (exp)
-  "Return a list of the factors of exp^n,
-  where each factor is of the form (^ y n)."
   (let ((factors nil)
-	(constant 1))
-    (labels
-	((fac (x n)
+	  (constant 1))
+  (labels
+       ((fac (x n)
 	   (cond
 	     ((numberp x)
 	      (setf constant (* constant (expt x n))))
@@ -258,13 +142,11 @@
 	(t `((^ , constant 1) .,factors))))))
 
 (defun unfactorize (factors)
-  "Convert a list of factors back into prefix form."
   (cond ((null factors) 1)
 	((length=1 factors) (first factors))
 	(t `(* ,(first factors) ,(unfactorize (rest factors))))))
 
 (defun divide-factors (numer denom)
-  "Divide a list of factors by another, producing a third."
   (let ((result (mapcar #'copy-list numer)))
     (dolist (d denom)
       (let ((factor (find (exp-lhs d) result :key #'exp-lhs
@@ -275,11 +157,9 @@
     (delete 0 result :key #'exp-rhs)))
 
 (defun free-of (exp var)
-  "True if expression has no occurrence of var."
   (not (find-anywhere var exp)))
 
 (defun find-anywhere (item tree)
-  "Does item occur anywhere in tree? If so, return it."
   (cond ((eql item tree) tree)
 	((atom tree) nil)
 	((find-anywhere item (first tree)))
@@ -316,8 +196,6 @@
 		   (t `(int? ,(unfactorize x-factors) ,x)))))))))
 
 (defun partition-if (pred list)
-  "Return 2 values: elements of list that satisfy pred,
-  and elements that don't."
   (let ((yes-list nil)
 	(no-list nil))
     (dolist (item list)
@@ -363,16 +241,6 @@
 (defun integrate-from-table (op arg)
   (let ((rule (get op 'int)))
     (subst arg (exp-lhs (exp-lhs (exp-lhs rule))) (exp-rhs rule))))
-
-(integration-table
- '((Int log(x) d x = x * log(x) - x)
-   (Int exp(x) d x = exp(x))
-   (Int sin(x) d x = - cos(X))
-   (Int cos(x) d x = sin(x))
-   (Int tan(x) d x = - log(cos(x)))
-   (Int sinh(x) d x = cosh(x))
-   (Int cosh(x) d x = sinh(x))
-   (Int tanh(x) d x = log(cosh(x)))))
 
 (set-simp-fn 'Int #'(lambda (exp)
 		      (integrate (exp-lhs exp) (exp-rhs exp))))
