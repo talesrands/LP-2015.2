@@ -33,6 +33,20 @@
 (defun rule-pattern (rule) (first rule))
 (defun rule-response (rule) (second rule))
 
+(defparameter *infix->prefix-rules*
+  (mapcar #'expand-pat-match-abbrev
+	  '(((x+ = y+) (= x y))
+	    ((- x+)    (- x))
+	    ((+ x+)    (+ x))
+	    ((x+ + y+) (+ x y))
+	    ((x+ - y+) (- x y))
+	    ((d y+ / d x) (d y x))
+	    ((Int y+ d x) (int y x))
+	    ((x+ * y+) (* x y))
+	    ((x+ / y+) (/ x y))
+	    ((x+ ^ y+) (^ x y))))
+  "A list of rules, ordered by precedence.")
+
 (defstruct (rule (:type list)) pattern response)
 (defstruct (exp (:type list)
 		(:constructor mkexp (lhs op rhs)))
