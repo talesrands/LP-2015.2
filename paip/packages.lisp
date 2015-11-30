@@ -114,4 +114,7 @@
   (:use :cl :utils))
 
 (defpackage :symbolicmath
+  (:use :cl :pattern :math-rules))
+
+(defpackage :math-rules
   (:use :cl :pattern))
