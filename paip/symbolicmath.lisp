@@ -65,14 +65,6 @@
   (if (atom exp) exp
     (simplify-exp (mapcar #'simplify exp))))
 
-(defun simplify-exp (exp)
-  (cond ((rule-based-translator exp *simplification-rules*
-	    :rule-if #'exp-lhs :rule-then #'exp-rhs
-	    :action #'(lambda (bindings response)
-	    	         (simplify (sublis bindings response)))))
-	((evaluable exp) (eval exp))
-	(t exp)))
-
 (defun evaluable (exp)
   (and (every #'numberp (exp-args exp))
        (or (member (exp-op exp) '(+ - * /))
