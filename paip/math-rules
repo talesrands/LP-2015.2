@@ -1,20 +1,6 @@
 (in-package :math-rules) 
 
-(defparameter *infix->prefix-rules*
-  (mapcar #'expand-pat-match-abbrev
-	  '(((x+ = y+) (= x y))
-	    ((- x+)    (- x))
-	    ((+ x+)    (+ x))
-	    ((x+ + y+) (+ x y))
-	    ((x+ - y+) (- x y))
-	    ((d y+ / d x) (d y x))
-	    ((Int y+ d x) (int y x))
-	    ((x+ * y+) (* x y))
-	    ((x+ / y+) (/ x y))
-	    ((x+ ^ y+) (^ x y))))
-  "A list of rules, ordered by precedence.")
-
-(defparameter *simplification-rules* (mapcar #'infix->prefix '(
+(setf *simplification-rules* (mapcar #'simp-rule '(
   (x + 0 = x)
   (0 + x = x)
   (x + x = 2*x)
