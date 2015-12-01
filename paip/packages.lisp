@@ -113,8 +113,5 @@
 (defpackage :clos
   (:use :cl :utils))
 
-(defpackage :symbolicmath
+(defpackage :symbolic-math
   (:use :cl :utils :pattern))
-
-(defpackage :math-rules
-  (:use :cl :utils :pattern :symbolicmath))
