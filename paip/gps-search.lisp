@@ -1,6 +1,8 @@
 
 (in-package :gps-search)
 
+(defparameter *ops* nil)
+
 (defun action-p (x)
   "Is x something that is (start) or (executing ...)?"
   (or (equal x '(start)) (executing-p x)))

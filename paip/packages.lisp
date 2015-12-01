@@ -74,7 +74,7 @@
 (defpackage :gps-search
   (:use :utils :cl :search)
   (:export
-   #:search-gps))
+   #:gps-search))
 
 (defpackage :gps-test
   (:use :utils :cl :gps-2 :gps-search))

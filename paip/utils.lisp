@@ -205,7 +205,8 @@
   #'(lambda () (format t ctl-string (incf num))))
 
 
-(defun rule-based-translator (input rules &key (matcher #'pattern::pat-match)
+(defun rule-based-translator (input rules &key
+					    (matcher #'pattern::pat-match)
 					    (rule-if #'first)
 					    (rule-then #'rest)
 					    (action #'sublis))
