@@ -46,7 +46,7 @@
    #:member-equal))
 
 (defpackage :tests-framework
-  (:use :utils :cl)
+  (:use :cl :utils)
   (:export
    #:deftest
    #:combine-results
@@ -69,15 +69,15 @@
    #:beam-search))
 
 (defpackage :search-test
-  (:use :utils :cl :search :tests-framework))
+  (:use :cl :utils :search :tests-framework))
 
 (defpackage :gps-search
-  (:use :utils :cl :search)
+  (:use :cl :utils :search)
   (:export
    #:gps-search))
 
 (defpackage :gps-test
-  (:use :utils :cl :gps-2 :gps-search))
+  (:use :cl :utils :gps-2 :gps-search))
 
 (defpackage :pattern
   (:use :cl :utils)
@@ -96,7 +96,7 @@
    #:expand-pat-match-abbrev))
 
 (defpackage :pattern-test
-  (:use :utils :cl :pattern :tests-framework))
+  (:use :cl :utils :pattern :tests-framework))
 
 
 (defpackage :eliza
@@ -108,7 +108,13 @@
   (:use :cl :utils :eliza :pattern))
 
 (defpackage :student
-  (:use :utils :cl :pattern))
+  (:use :cl :utils :pattern))
 
 (defpackage :clos
   (:use :cl :utils))
+
+(defpackage :symbolicmath
+  (:use :cl :utils :pattern))
+
+(defpackage :math-rules
+  (:use :cl :utils :pattern :symbolicmath))
