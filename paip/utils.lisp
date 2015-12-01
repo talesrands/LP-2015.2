@@ -205,14 +205,13 @@
   #'(lambda () (format t ctl-string (incf num))))
 
 
-(defun rule-based-translator (input rules &key
-					    (matcher #'pattern::pat-match)
-					    (rule-if #'first)
-					    (rule-then #'rest)
-					    (action #'sublis))
+(defun rule-based-translator (input rules &key (matcher #'pattern::pat-match)
+				    (rule-if #'first)
+				    (rule-then #'rest)
+				    (action #'sublis))
   (some #'(lambda (rule)
-	    (let ((result (funcall matcher (funcall rule-if rule)
-				   input)))
-	      (if (not (eq result +fail+))
-		  (funcall action result (funcall rule-then rule)))))
+	    (multiple-value-bind (result bindings)
+		(funcall matcher (funcall rule-if rule) input)
+	      (if result
+		  (funcall action bindings (funcall rule-then rule)))))
 	rules))
