@@ -89,12 +89,12 @@
         (let ((pos (position (first pat) input
                              :start start :test #'equal)))
           (if (null pos)
-              +fail+
-              (let ((b2 (nth-value 1 (pat-match pat (subseq input pos)
+              (values nil nil)
+              (multiple-value-bind (res b2)  (pat-match pat (subseq input pos)
 				   (nth-value 1 (match-variable var (subseq input 0 pos)
-						   bindings))))))
+						   bindings)))
                 ;; If this match failed, try another longer one
-                (if (eq b2 +fail+)
+                (if (not res)
                     (segment-match pattern input bindings (+ pos 1))
                     (values t b2))))))))
         
