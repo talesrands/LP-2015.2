@@ -192,3 +192,14 @@
     ((atom pat) pat)
     (t (cons (expand-pat-match-abbrev (first pat))
 	     (expand-pat-match-abbrev (rest pat))))))
+
+(defun rule-based-translator (input rules &key (matcher #'pattern::pat-match)
+				    (rule-if #'first)
+				    (rule-then #'rest)
+				    (action #'sublis))
+  (some #'(lambda (rule)
+	    (multiple-value-bind (result bindings)
+		(funcall matcher (funcall rule-if rule) input)
+	      (if result
+		  (funcall action bindings (funcall rule-then rule)))))
+	rules))

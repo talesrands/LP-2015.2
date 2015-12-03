@@ -202,3 +202,20 @@
 	      (if (binary-exp-p exp)
 		  (list (exp-lhs exp) (exp-op exp) (exp-rhs exp))
 		  exp))))
+
+(defun solve-system (e u)
+  ;;  inputs na forma ((= (+ (* a x) (* b y)) m) (= (+ (* c x) (* d y)) n))
+  (multiple-value-bind (res binding)
+      (pat-match `((= (+ (* ?A ,(first u)) (* ?B ,(second u))) ?M)
+		   (= (+ (* ?C ,(first u)) (* ?D ,(second u))) ?N))
+		 e)
+  (if res
+      (let ((a (cdr (assoc '?A binding)))
+	    (b (cdr (assoc '?B binding)))
+	    (c (cdr (assoc '?C binding)))
+	    (d (cdr (assoc '?D binding)))
+	    (m (cdr (assoc '?M binding)))
+	    (n (cdr (assoc '?N binding))))
+	(let ((y-f (eval (/ (- (* n a) (* m c)) (- (* d a) (* b c))))))
+	(solve (subst y-f 'y (list (car e))) `((y . ,y-f))))))))
+
