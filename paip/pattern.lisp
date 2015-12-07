@@ -89,15 +89,42 @@
         (let ((pos (position (first pat) input
                              :start start :test #'equal)))
           (if (null pos)
-              +fail+
-              (let ((b2 (nth-value 1 (pat-match pat (subseq input pos)
-				   (nth-value 1 (match-variable var (subseq input 0 pos)
-						   bindings))))))
-                ;; If this match failed, try another longer one
-                (if (eq b2 +fail+)
-                    (segment-match pattern input bindings (+ pos 1))
-                    (values t b2))))))))
-        
+	      (values +fail+ nil)
+	      (multiple-value-bind (res b2)
+		  (pat-match pat (subseq input pos)
+			     (nth-value 1 (match-variable var (subseq input 0 pos)
+							  bindings)))
+		;; If this match failed, try another longer one
+		(if (not res)
+		    (segment-match pattern input bindings (+ pos 1))
+		    (values t b2))))))))
+
+(defun segment-match (pattern input bindings &optional (start 0))
+  "Match the segment pattern ((?* var) . pat) against input."
+  (let ((var (second (first pattern)))
+        (pat (rest pattern)))
+    (if (null pat)
+        (match-variable var input bindings)
+        (let ((pos (first-match-pos (first pat) input start)))
+          (if (null pos)
+	      (values +fail+ nil)
+	      (multiple-value-bind (res1 b1)
+		  (match-variable var (subseq input 0 pos) bindings)
+		(multiple-value-bind (res2 b2)
+		    (pat-match pat (subseq input pos) b1)
+		  (if (not res2)
+		      (segment-match pattern input bindings (+ pos 1))
+		      (values t b2)))))))))
+
+
+(defun first-match-pos (pat1 input start)
+  (cond
+    ((and (atom pat1) (not (variable-p pat1)))
+     (position pat1 input :start start :test #'equal))
+    ((< start (length input)) start)
+    (t nil)))
+
+
 (defun segment-pattern-p (pattern)
   (and (consp pattern) (consp (first pattern))
     (symbolp (first (first pattern)))
@@ -156,12 +183,6 @@
       +fail+
       bindings))
        
-(defun first-match-pos (patl input start)
-  (cond
-    ((and (atom patl) (not (variable-p patl)))
-     (position patl input :start start :test #'equal))
-    ((< start (length input)) start)
-    (t nil)))
 
 (defun segment-match+ (pattern input bindings)
   (segment-match pattern input bindings))
@@ -191,3 +212,14 @@
     ((atom pat) pat)
     (t (cons (expand-pat-match-abbrev (first pat))
 	     (expand-pat-match-abbrev (rest pat))))))
+
+(defun rule-based-translator (input rules &key (matcher #'pattern::pat-match)
+				    (rule-if #'first)
+				    (rule-then #'rest)
+				    (action #'sublis))
+  (some #'(lambda (rule)
+	    (multiple-value-bind (result bindings)
+		(funcall matcher (funcall rule-if rule) input)
+	      (if result
+		  (funcall action bindings (funcall rule-then rule)))))
+	rules))

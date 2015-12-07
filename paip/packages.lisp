@@ -18,8 +18,7 @@
    #:string->list
    #:eql-by-name-if-symbol
    #:interactive-interpreter
-   #:prompt-generator
-   #:rule-based-translator))
+   #:prompt-generator))
 
 (defpackage :chapter-1
   (:use :utils :cl)
@@ -93,7 +92,8 @@
    #:pat-match
    #:pat-match-abbrev
    #:segment-pattern-p
-   #:expand-pat-match-abbrev))
+   #:expand-pat-match-abbrev
+   #:rule-based-translator))
 
 (defpackage :pattern-test
   (:use :cl :utils :pattern :tests-framework))
