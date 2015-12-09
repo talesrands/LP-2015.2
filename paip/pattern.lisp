@@ -17,7 +17,8 @@
 (setf (get '?if 'segment-match) 'match-if)
 
 (defun variable-p (x)
-  (and (symbolp x) (equal (elt (symbol-name x) 0) #\?)))
+  (and (symbolp x)
+       (equal (elt (symbol-name x) 0) #\?)))
   
 (defun make-binding (var val)
   (cons var val))

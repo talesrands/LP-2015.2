@@ -81,7 +81,6 @@
 (defpackage :pattern
   (:use :cl :utils)
   (:export
-   #:variable-p
    #:make-binding
    #:binding-var
    #:binding-val
@@ -97,7 +96,6 @@
 
 (defpackage :pattern-test
   (:use :cl :utils :pattern :tests-framework))
-
 
 (defpackage :eliza
   (:use :cl :utils :pattern)
