@@ -113,3 +113,6 @@
 
 (defpackage :symbolic-math
   (:use :cl :utils :pattern))
+
+(defpackage :battleship
+  (:use :cl :utils))

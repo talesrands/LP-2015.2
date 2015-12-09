@@ -27,4 +27,5 @@
 		 (:file "student"           :depends-on ("pattern"))
 		 (:file "clos"              :depends-on ("utils"))
 		 (:file "math-symbolic"     :depends-on ("pattern"))
-		 (:file "math-rules"        :depends-on ("math-symbolic"))))
+		 (:file "math-rules"        :depends-on ("math-symbolic"))
+		 (:file "battleship"        :depends-on ("utils"))))
